@@ -1855,7 +1855,7 @@ const SECTORS = [
       {x:"Sin un archivo anfitrión no puede hacer nada.",a:0},
       {x:"Conficker: usa fallas de Windows para controlar millones de máquinas.",a:1}
     ]}]},
-  { name:"Ficha de malware", m:"Identifica cada malware antes de que se active.", brief:["troyano","driveby",{vs:["troyano","driveby"],d:"El caballo de Troya es el programa disfrazado de algo inofensivo. La descarga oculta es la vía de entrada: el malware viene escondido en algo que descargaste."},"sqli","ransomware","spyware","keylogger",{vs:["spyware","keylogger"],d:"El spyware vigila qué sitios visitas y te llena de anuncios. El keylogger graba cada tecla que pulsas para robar contraseñas."}], phases:[{ type:"wire",
+  { name:"Ficha de malware", m:"Identifica cada malware antes de que se active.", brief:["troyano","driveby",{vs:["troyano","driveby"],d:"El caballo de Troya es el programa disfrazado de algo inofensivo. La descarga oculta es la vía de entrada: el malware viene escondido en algo que descargaste."},"sqli","ransomware","spyware","keylogger",{vs:["spyware","keylogger"],t:"El keylogger es un tipo de spyware",d:"Todo spyware se instala a escondidas para vigilarte. El más común mira qué sitios visitas y te llena de anuncios. El keylogger es su forma más peligrosa: graba cada tecla que pulsas para robar contraseñas y números de tarjetas."}], phases:[{ type:"wire",
     sets:[
       [{c:"troyano",d:"Parece inofensivo y abre la puerta a otro malware. No se reproduce."},
        {c:"ransomware",d:"Cifra tus archivos y exige un pago para devolverlos."},
@@ -3454,7 +3454,7 @@ function showStory(i) {
   } else if (typeof e === "string") html = `<article class="story"><div class="story-vis">${glyph(e, true, "g-hero")}</div><h3 class="story-term">${C[e].t}</h3><p class="story-hook">${C[e].h}</p><p class="story-def">${C[e].d}</p>${C[e].x ? `<p class="story-ex"><b class="mono">Ejemplo</b> ${C[e].x}</p>` : ""}</article>`;
   else {
     const items = e.vs.map(v => typeof v === "string" ? { g: v, l: C[v].t } : v);
-    html = `<article class="story vs"><p class="mono story-tag">¿Cuál es la diferencia?</p><div class="b-vs" style="--n:${items.length}">${items.map(v => `<figure class="vs-p">${glyph(v.g, true, "g-hero")}<figcaption>${v.l}</figcaption></figure>`).join("")}</div><p class="story-d">${e.d}</p></article>`;
+    html = `<article class="story vs"><p class="mono story-tag">${e.t || "¿Cuál es la diferencia?"}</p><div class="b-vs" style="--n:${items.length}">${items.map(v => `<figure class="vs-p">${glyph(v.g, true, "g-hero")}<figcaption>${v.l}</figcaption></figure>`).join("")}</div><p class="story-d">${e.d}</p></article>`;
   }
   $("#deck").innerHTML = html;
   $$(".st-seg i").forEach((f, k) => { f.style.transform = `scaleX(${k < i ? 1 : 0})`; });
