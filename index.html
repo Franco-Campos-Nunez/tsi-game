@@ -2998,7 +2998,7 @@ const MECH = {
   seq:   { n: "Circuito", d: "Ordena los pasos arrastrándolos y pulsa Comprobar: la corriente recorre el circuito hasta el primer paso fuera de lugar.", k: "Arrastra los pasos · o elige con 1–9 y mueve con ↑ ↓ · Enter comprueba", kt: "Arrastra los pasos y toca Comprobar", setup: seqSetup },
   drag:  { n: "Diagrama", d: "Arrastra cada pieza a la zona del diagrama que le corresponde.", k: "Arrastra · o toca pieza y zona · teclas 1–4", kt: "Arrastra la pieza, o tócala y luego toca la zona", setup: dragSetup },
   wire:  { n: "Cableado", d: "Tira un cable desde cada concepto hasta su descripción.", k: "Arrastra el cable · o toca ambos extremos · número + letra", kt: "Arrastra el cable, o toca un concepto y luego su descripción", setup: wireSetup },
-  run:   { n: "Carrera", d: "Corres sin parar. Ponte en el carril correcto y acelera: mientras antes cruces la puerta, más puntos.", k: "↑ ↓ carril · → o Espacio acelera · 1–3 elige y acelera", kt: "Toca una opción para cambiar de carril y acelerar", setup: runSetup },
+  run:   { n: "Carrera", d: "Corres sin parar. Ponte en el carril correcto y acelera: mientras antes cruces la puerta, más puntos.", k: "↑ ↓ carril · → o Espacio acelera · ← frena · 1–3 elige y acelera", kt: "Toca una opción para cambiar de carril y acelerar", setup: runSetup },
   memo:  { n: "Pares", d: "Memoriza el tablero y luego voltea parejas: cada concepto con su pista.", k: "Toca dos cartas", kt: "Toca dos cartas", setup: memoSetup },
   word:  { n: "Descifrar", d: "Lee la pista y arma el concepto letra por letra.", k: "Escribe con el teclado o toca las letras", kt: "Toca las letras en orden", setup: wordSetup },
   snake: { n: "Escáner", d: "Guía al escáner por la red y come solo lo que cumple la regla.", k: "Usa las flechas del teclado (o W A S D)", kt: "Desliza hacia donde quieras girar", setup: snakeSetup },
@@ -4249,6 +4249,7 @@ function runSetup(ph) {
     if (k === "ArrowUp" || k === "w" || k === "W") { e.preventDefault(); setLane(R.lane - 1); }
     else if (k === "ArrowDown" || k === "s" || k === "S") { e.preventDefault(); setLane(R.lane + 1); }
     else if (k === "ArrowRight" || k === " " || k === "Enter" || k === "d" || k === "D") { e.preventDefault(); dash(); }
+    else if (k === "ArrowLeft" || k === "a" || k === "A") { e.preventDefault(); brake(); }
     else if (/^[1-3]$/.test(k)) { setLane(+k - 1); dash(); }
   };
   R.fit = placeRunner;
@@ -4262,6 +4263,11 @@ function dash() {
   const G = R && R.gate; if (!G || !G.live || G.dash || R.ph.type !== "run" || held() || R.busy) return;
   const g = trackGeo(); G.dash = true; G.left = clamp((G.x - g.RX) / (g.W + 8 - g.RX), 0, 1);
   $("#runner").classList.add("dash"); A.whoosh();
+}
+/* ← after a dash: back to normal speed (the early-dash bonus is lost until you dash again) */
+function brake() {
+  const G = R && R.gate; if (!G || !G.live || !G.dash || R.ph.type !== "run" || held() || R.busy) return;
+  G.dash = false; G.left = 0; $("#runner").classList.remove("dash"); A.tone(300, .06, "square", .03);
 }
 function nextGate() {
   const it = R.queue.shift();
@@ -4277,7 +4283,8 @@ function nextGate() {
   R.gate = { x: x0, live: true, v: (x0 - g.RX) / T };
   gate.style.transform = `translateX(${R.gate.x}px)`;
   $$(".bit").forEach(b => b.remove()); R.bits = [];
-  [.3, .52, .74].forEach(f => { const el = document.createElement("span"); el.className = "bit"; $("#track").appendChild(el); R.bits.push({ el, x: g.RX + (g.W - g.RX) * f, lane: Math.floor(Math.random() * 3), got: false }); });
+  /* the bonus bits come right at the start, away from the doors; once read the question you can dash */
+  [.06, .13, .2].forEach(f => { const el = document.createElement("span"); el.className = "bit"; $("#track").appendChild(el); R.bits.push({ el, x: g.RX + (g.W - g.RX) * f, lane: Math.floor(Math.random() * 3), got: false }); });
   placeRunner();
 }
 function runFrame(dt) {
