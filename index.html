@@ -1874,7 +1874,7 @@ const SECTORS = [
       {t:"Ingeniería social",c:"ingsocial",w:"La ingeniería social engaña a personas para que revelen contraseñas. No necesita ningún software."},
       {t:"War driving",c:"wardriving",w:"War driving es interceptar el Wi-Fi desde afuera de un edificio. Es espionaje, no software malicioso."}
     ]}]},
-  { name:"El engaño", m:"Te están engañando. Corre hacia la técnica correcta.", brief:["phishing","spear",{vs:["phishing","spear"],d:"El phishing se lanza a muchas personas a la vez. El spear phishing apunta a una sola, con un mensaje que parece de alguien conocido."},"pharming","eviltwin",{vs:["phishing","pharming","eviltwin"],d:"Phishing: un mensaje falso te lleva a un sitio falso. Pharming: escribes bien la dirección y aun así te desvían. Gemelos malvados: la red Wi-Fi misma es falsa."},"spoofing","ingsocial","identidad"], phases:[{ type:"run", tag:"¿Qué técnica es?", vis:["pharming","eviltwin","spear"],
+  { name:"El engaño", m:"Te están engañando. Corre hacia la técnica correcta.", brief:["phishing","spear",{vs:["phishing","spear"],t:"El spear phishing es un tipo de phishing",d:"El phishing se lanza a muchas personas a la vez. El spear phishing apunta a una sola, con un mensaje que parece de alguien conocido."},"pharming","eviltwin",{vs:["phishing","pharming","eviltwin"],d:"Phishing: un mensaje falso te lleva a un sitio falso. Pharming: escribes bien la dirección y aun así te desvían. Gemelos malvados: la red Wi-Fi misma es falsa."},"spoofing","ingsocial","identidad"], phases:[{ type:"run", tag:"¿Qué técnica es?", vis:["pharming","eviltwin","spear"],
     pool:["phishing","spear","pharming","eviltwin","spoofing","ingsocial","identidad"],
     items:[
       {q:"Un correo con el logo de tu banco te pide confirmar tus datos en un enlace.",a:"phishing"},
@@ -1885,7 +1885,7 @@ const SECTORS = [
       {q:"Con tu RUT y una foto de tu carnet, alguien pide un crédito a tu nombre.",a:"identidad"},
       {q:"El atacante usa una dirección de correo falsa para ocultar quién es realmente.",a:"spoofing"}
     ]}]},
-  { name:"Ataques a la red", m:"La red está bajo ataque. Intercepta cada paquete.", brief:["hacker","dos","ddos","botnet",{vs:["dos","ddos","botnet"],d:"DoS: un atacante satura el servidor. DDoS: miles de equipos lo atacan a la vez. Esos miles suelen ser una botnet, computadoras zombis que el atacante controla."},"sniffer","cibervandalismo","clickfraud","ciberguerra","wardriving"], phases:[{ type:"mcq", tag:"¿Qué ataque es?", vis:["ddos","botnet","sniffer","wardriving"],
+  { name:"Ataques a la red", m:"La red está bajo ataque. Intercepta cada paquete.", brief:["hacker","dos","ddos","botnet",{vs:["dos","ddos","botnet"],t:"El DDoS es un tipo de DoS",d:"DoS: un atacante satura el servidor. DDoS: miles de equipos lo atacan a la vez. Esos miles suelen ser una botnet, computadoras zombis que el atacante controla."},"sniffer","cibervandalismo","clickfraud","ciberguerra","wardriving"], phases:[{ type:"mcq", tag:"¿Qué ataque es?", vis:["ddos","botnet","sniffer","wardriving"],
     pool:["dos","ddos","botnet","sniffer","cibervandalismo","clickfraud","ciberguerra","wardriving"],
     items:[
       {q:"Desde un solo equipo, un atacante inunda de solicitudes falsas el servidor de una tienda y nadie puede comprar. No se robó ningún dato.",a:"dos",w:"Es una negación de servicio (DoS): satura el servidor para que no atienda. Viene de un solo equipo, así que no es un DDoS ni hace falta una botnet.",p:["dos","botnet","sniffer","cibervandalismo"]},
