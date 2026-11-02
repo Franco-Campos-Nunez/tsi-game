@@ -781,7 +781,9 @@ button:disabled{cursor:default}
 .rs-q .g{width:clamp(96px,24vw,150px);flex:none}
 .rs-hook{margin:0;font-size:clamp(19px,4vw,24px);font-weight:700;line-height:1.3}
 .rs-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.rs-time{height:3px;background:var(--line);overflow:hidden}
+.rs-time{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+/* the countdown is information, not decoration: it keeps running with reduced animations */
+html.calm .rs-time i{animation-duration:var(--rs)!important;animation-iteration-count:1!important}
 .rs-time i{display:block;height:100%;background:var(--threat);transform-origin:left;animation:drain 10s linear forwards}
 @keyframes drain{to{transform:scaleX(0)}}
 @media (max-width:420px){.rs-opts{grid-template-columns:1fr}}
@@ -4820,7 +4822,7 @@ function rescue(cont) {
   const opts = shuffle([id, ...shuffle(same).slice(0, 3)]);
   const el = $("#rescue"), r = R, RS = R.beast ? 10000 : 15000;
   el.innerHTML = `<p class="mono" style="margin:0;color:var(--mute)">Sin escudos</p><h3 class="rs-title">Segunda oportunidad</h3><p class="rs-sub">Acierta y sigues con un escudo.</p>
-    <div class="rs-q">${glyph(id, true, "g-hero")}<p class="rs-hook">${esc(C[id].h)}</p></div><div class="rs-time"><i style="animation-duration:${RS}ms"></i></div>
+    <div class="rs-q">${glyph(id, true, "g-hero")}<p class="rs-hook">${esc(C[id].h)}</p></div><div class="rs-time"><i style="--rs:${RS}ms;animation-duration:${RS}ms"></i></div>
     <div class="rs-opts">${opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="k">${i + 1}</span><span>${esc(C[o].t)}</span></button>`).join("")}</div>`;
   el.hidden = false; A.lose();
   let over = false;
