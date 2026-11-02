@@ -564,6 +564,7 @@ button:disabled{cursor:default}
 .sheet.good .sh-head{color:var(--safe)}
 .sh-quote{margin:0;color:var(--mute);font-size:16px;line-height:1.4;max-width:62ch}
 .sh-term{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(22px,4vw,34px);line-height:1.05;letter-spacing:-.025em;text-transform:uppercase;overflow-wrap:anywhere}
+.sh-rule{margin:-4px 0 4px;font-weight:700;font-size:15px;line-height:1.4;color:var(--ink)}
 .sh-sub{margin:0;color:var(--mute)}
 .sh-why{margin:0;font-size:18px;line-height:1.5;max-width:62ch;text-wrap:pretty}
 .sheet-panel .btn{align-self:flex-start;margin-top:6px}
@@ -3745,7 +3746,7 @@ function sheet(o, cb) {
       (more ? `<details class="sh-more"><summary>+ Más explicación</summary>${more}</details>` : "") +
       `<button class="btn" id="sh-go">Continuar <span class="k">Espacio</span></button>`;
   } else $("#sheet-panel").innerHTML =
-    `<p class="mono sh-head">${esc(o.head)}</p>` +
+    `<p class="mono sh-head">${esc(o.head)}</p>` + (o.rule ? `<p class="sh-rule">${esc(o.rule)}</p>` : "") +
     (o.quote ? `<p class="sh-quote">«${esc(o.quote)}» →</p>` : "") +
     `<div class="sh-grid"><div class="sh-txt"><p class="sh-term">${esc(o.term)}</p>` +
     (o.sub ? `<p class="mono sh-sub">${esc(o.sub)}</p>` : "") +
@@ -4529,7 +4530,7 @@ function snakeEat(it) {
   } else {
     S.body = S.body.slice(0, Math.max(3, S.body.length - 2));
     fx.burst(x, y, css("--threat"), 24, 1.1); live(it.def.t + " no cumple la regla");
-    fail({ id: it.def.c, head: "Eso no cumple la regla", term: it.def.t, sub: R.ph.rule, why: it.def.w || C[it.def.c].d }, () => { S.next = []; snakeEnsure(); });
+    fail({ id: it.def.c, head: "Eso no cumple la regla", rule: R.ph.rule, term: it.def.t, why: it.def.w || C[it.def.c].d }, () => { S.next = []; snakeEnsure(); });
   }
 }
 function snakeDraw() {
