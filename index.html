@@ -1234,6 +1234,11 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .fc.r-0{box-shadow:inset 0 0 0 2px var(--line)}
 /* ===== arcade home: player slots ===== */
 .t-slots{display:flex;flex-direction:column;gap:10px;width:100%;max-width:540px}
+.pslot.chap .sl-p{font-size:15px}
+.pslot.chap .sl-n{white-space:normal;overflow:visible;text-overflow:clip;font-size:clamp(15px,4.2vw,20px);line-height:1.15}
+.pslot.chap.soon{opacity:.55;cursor:default;background:transparent;box-shadow:none;outline:1.5px dashed var(--line);outline-offset:-1.5px}
+.pslot.chap.soon.no{animation:nudge .38s}
+.ch-back{align-self:flex-start}
 .t-pick{margin:0 0 2px;color:var(--gold)!important;letter-spacing:.2em;animation:blink 1.6s ease-in-out infinite}
 .pslot{display:flex;align-items:center;gap:14px;min-height:70px;padding:10px 16px;border-radius:6px;background:color-mix(in srgb,var(--bg-2) 70%,transparent);box-shadow:inset 0 0 0 1.5px var(--line);text-align:left;transition:translate .15s var(--out),box-shadow .2s}
 .pslot:focus-visible{translate:4px 0;box-shadow:inset 0 0 0 2px var(--c),0 0 26px -8px var(--c);outline:none}@media (hover:hover){.pslot:hover{translate:4px 0;box-shadow:inset 0 0 0 2px var(--c),0 0 26px -8px var(--c);outline:none}}
@@ -3217,6 +3222,15 @@ function readChallenge() {
 const HOME_ICO = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.6 8 3l5.5 4.6M4 6.6V13h3V9.6h2V13h3V6.6"/></svg>';
 const MODE_S = { normal: "Ritmo tranquilo para aprender.", beast: "Más rápido, combos y +50% XP." };
 let NEWSLOT = null, newMode = "normal";
+/* ===================== chapters =====================
+   The game holds one book chapter per entry. Brecha Cero (chapter 8) is the content in SECTORS.
+   A chapter with ready:false shows as "En preparación" and cannot be opened yet.
+   See CAPITULOS.md for how to add the content of a new chapter. */
+const CHAPTERS = [
+  { id: "c8", n: "Capítulo 8", t: "Seguridad en los sistemas de información", sub: "Brecha Cero", c: "#00e0ff", ready: true },
+  { id: "next", n: "Próximo capítulo", t: "En preparación", sub: "Pronto", c: "#ffd23f", ready: false }
+];
+let CHAP = null; /* chosen on every visit from the title screen */
 function renderTitle() {
   const ch = $("#t-challenge"); ch.hidden = !CH;
   if (CH) ch.innerHTML = `<span class="mono">Te retaron${CH.beast ? " · modo Bestia" : ""}</span><p>Supera ${fmt(CH.pts)} puntos en «${esc(CH.def.name)}».</p><button class="btn" id="t-accept">Aceptar el reto</button>`;
@@ -3232,8 +3246,12 @@ function renderTitle() {
     if (!TOUCH) setTimeout(() => { const n = $("#t-name"); if (n) n.focus(); }, 60);
     return;
   }
+  if (!CHAP) {
+    el.innerHTML = `<p class="mono t-pick">Elige el capítulo</p>` + CHAPTERS.map(c => `<button class="pslot chap${c.ready ? "" : " soon"}" data-chap="${c.id}" style="--c:${c.c}"${c.ready ? "" : ' aria-disabled="true"'}><span class="sl-p">${c.ready ? c.n.replace("Capítulo ", "C") : "··"}</span><span class="sl-body"><span class="sl-n">${esc(c.t)}</span><span class="mono sl-m">${esc(c.ready ? c.n + " · " + c.sub : c.n + " · " + c.sub)}</span></span><span class="sl-go" aria-hidden="true">${c.ready ? "›" : ""}</span></button>`).join("");
+    return;
+  }
   const all = SECTORS.reduce((n, s) => n + s.missions.length, 0);
-  el.innerHTML = `<p class="mono t-pick">Elige tu partida</p>` + Array.from({ length: SLOTS }, (_, i) => {
+  el.innerHTML = `<button type="button" class="ns-back ch-back" id="t-chap" aria-label="Cambiar de capítulo">‹ Capítulos</button><p class="mono t-pick">Elige tu partida</p>` + Array.from({ length: SLOTS }, (_, i) => {
     const r = slotRaw(i);
     if (!slotUsed(r)) return `<button class="pslot empty" data-i="${i}" style="--c:${SLOT_COL[i]}"><span class="sl-p">P${i + 1}</span><span class="sl-body"><span class="sl-n">Nueva partida</span></span><span class="sl-go" aria-hidden="true">+</span></button>`;
     const s = loadSave(r), rk = rankInfo(s.xp), done = Object.keys(s.missions).length, last = i === SLOT;
@@ -5376,6 +5394,8 @@ function openTab(id) {
 /* ===================== wiring ===================== */
 function bind() {
   $("#t-slots").addEventListener("click", e => {
+    const ch = e.target.closest("[data-chap]"); if (ch) { const c = CHAPTERS.find(x => x.id === ch.dataset.chap); if (c && c.ready) { A.init(); CHAP = c.id; renderTitle(); } else { restart(ch, "no"); } return; }
+    if (e.target.closest("#t-chap")) { CHAP = null; NEWSLOT = null; renderTitle(); return; }
     const s = e.target.closest(".pslot"); if (s) { A.init(); const i = +s.dataset.i; if (slotUsed(slotRaw(i))) useSlot(i); else { NEWSLOT = i; newMode = "normal"; renderTitle(); } return; }
     const m = e.target.closest("[data-nm]"); if (m) { newMode = m.dataset.nm; $$("[data-nm]").forEach(x => { const on = x.dataset.nm === newMode; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on); }); newMode === "beast" ? A.fever() : A.tick(); return; }
     if (e.target.closest("#t-back")) { NEWSLOT = null; renderTitle(); }
