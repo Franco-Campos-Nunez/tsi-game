@@ -3230,7 +3230,7 @@ const CHAPTERS = [
   { id: "c8", n: "Capítulo 8", t: "Seguridad en los sistemas de información", sub: "Brecha Cero", c: "#00e0ff", ready: true },
   { id: "next", n: "Próximo capítulo", t: "En preparación", sub: "Pronto", c: "#ffd23f", ready: false }
 ];
-let CHAP = null; /* chosen on every visit from the title screen */
+let CHAP = null, PICKCHAP = false; /* the save is chosen first (it holds every chapter), then the chapter */
 function renderTitle() {
   const ch = $("#t-challenge"); ch.hidden = !CH;
   if (CH) ch.innerHTML = `<span class="mono">Te retaron${CH.beast ? " · modo Bestia" : ""}</span><p>Supera ${fmt(CH.pts)} puntos en «${esc(CH.def.name)}».</p><button class="btn" id="t-accept">Aceptar el reto</button>`;
@@ -3246,12 +3246,12 @@ function renderTitle() {
     if (!TOUCH) setTimeout(() => { const n = $("#t-name"); if (n) n.focus(); }, 60);
     return;
   }
-  if (!CHAP) {
-    el.innerHTML = `<p class="mono t-pick">Elige el capítulo</p>` + CHAPTERS.map(c => `<button class="pslot chap${c.ready ? "" : " soon"}" data-chap="${c.id}" style="--c:${c.c}"${c.ready ? "" : ' aria-disabled="true"'}><span class="sl-p">${c.ready ? c.n.replace("Capítulo ", "C") : "··"}</span><span class="sl-body"><span class="sl-n">${esc(c.t)}</span><span class="mono sl-m">${esc(c.ready ? c.n + " · " + c.sub : c.n + " · " + c.sub)}</span></span><span class="sl-go" aria-hidden="true">${c.ready ? "›" : ""}</span></button>`).join("");
+  if (PICKCHAP) {
+    el.innerHTML = `<button type="button" class="ns-back ch-back" id="t-chap" aria-label="Volver a elegir partida">‹ Partidas</button><p class="mono t-pick">Elige el capítulo</p>` + CHAPTERS.map(c => `<button class="pslot chap${c.ready ? "" : " soon"}" data-chap="${c.id}" style="--c:${c.c}"${c.ready ? "" : ' aria-disabled="true"'}><span class="sl-p">${c.ready ? c.n.replace("Capítulo ", "C") : "··"}</span><span class="sl-body"><span class="sl-n">${esc(c.t)}</span><span class="mono sl-m">${esc(c.ready ? c.n + " · " + c.sub : c.n + " · " + c.sub)}</span></span><span class="sl-go" aria-hidden="true">${c.ready ? "›" : ""}</span></button>`).join("");
     return;
   }
   const all = SECTORS.reduce((n, s) => n + s.missions.length, 0);
-  el.innerHTML = `<button type="button" class="ns-back ch-back" id="t-chap" aria-label="Cambiar de capítulo">‹ Capítulos</button><p class="mono t-pick">Elige tu partida</p>` + Array.from({ length: SLOTS }, (_, i) => {
+  el.innerHTML = `<p class="mono t-pick">Elige tu partida</p>` + Array.from({ length: SLOTS }, (_, i) => {
     const r = slotRaw(i);
     if (!slotUsed(r)) return `<button class="pslot empty" data-i="${i}" style="--c:${SLOT_COL[i]}"><span class="sl-p">P${i + 1}</span><span class="sl-body"><span class="sl-n">Nueva partida</span></span><span class="sl-go" aria-hidden="true">+</span></button>`;
     const s = loadSave(r), rk = rankInfo(s.xp), done = Object.keys(s.missions).length, last = i === SLOT;
@@ -3293,9 +3293,10 @@ function useSlot(i) {
   applyCalm(); applySkin(); renderMode();
   selSec = null; listOpen = false;
   if (LB.state === "on" && !LB.readonly) pullSave();
-  startGame();
+  /* after the save comes the chapter */
+  CHAP = null; PICKCHAP = true; NEWSLOT = null; renderTitle(); go("s-title");
 }
-function goHome() { NEWSLOT = null; if (R) cleanup(); A.beatStop(); renderTitle(); go("s-title"); }
+function goHome() { NEWSLOT = null; CHAP = null; PICKCHAP = false; if (R) cleanup(); A.beatStop(); renderTitle(); go("s-title"); }
 /* animations stay on unless the player turns on "Animaciones suaves" (a system "reduce motion" setting was silently switching them off on PCs) */
 const isCalm = () => !!PREF.calm;
 const GEAR_ICO = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
@@ -5394,8 +5395,8 @@ function openTab(id) {
 /* ===================== wiring ===================== */
 function bind() {
   $("#t-slots").addEventListener("click", e => {
-    const ch = e.target.closest("[data-chap]"); if (ch) { const c = CHAPTERS.find(x => x.id === ch.dataset.chap); if (c && c.ready) { A.init(); CHAP = c.id; renderTitle(); } else { restart(ch, "no"); } return; }
-    if (e.target.closest("#t-chap")) { CHAP = null; NEWSLOT = null; renderTitle(); return; }
+    const ch = e.target.closest("[data-chap]"); if (ch) { const c = CHAPTERS.find(x => x.id === ch.dataset.chap); if (c && c.ready) { A.init(); CHAP = c.id; PICKCHAP = false; startGame(); } else { restart(ch, "no"); } return; }
+    if (e.target.closest("#t-chap")) { CHAP = null; PICKCHAP = false; NEWSLOT = null; renderTitle(); return; }
     const s = e.target.closest(".pslot"); if (s) { A.init(); const i = +s.dataset.i; if (slotUsed(slotRaw(i))) useSlot(i); else { NEWSLOT = i; newMode = "normal"; renderTitle(); } return; }
     const m = e.target.closest("[data-nm]"); if (m) { newMode = m.dataset.nm; $$("[data-nm]").forEach(x => { const on = x.dataset.nm === newMode; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on); }); newMode === "beast" ? A.fever() : A.tick(); return; }
     if (e.target.closest("#t-back")) { NEWSLOT = null; renderTitle(); }

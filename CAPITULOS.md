@@ -10,7 +10,7 @@ Documento para retomar el trabajo en un chat nuevo. Léelo completo antes de toc
 | Versión congelada del capítulo 8 | rama `cap8-publicado` en `tsi-game` (copia exacta de lo compartido) |
 | Desarrollo de capítulos nuevos | rama `desarrollo` en `tsi-game` (GitHub Pages no la publica) |
 | Respaldo y herramientas | repo `Franco-Campos-Nunez/Proyecto-TSI`, rama `brecha-cero-backup`, carpeta `brecha-cero/` |
-| Vista previa en Claude | artefacto https://claude.ai/artifact/6sk4u2QxFffACm4vD8rtRJ |
+| Vista previa en Claude (borrador entre el profesor y Claude) | artefacto https://claude.ai/artifact/6sk4u2QxFffACm4vD8rtRJ — para publicar ahí desde otro chat: leerlo primero con Artifact `read` y luego publicar con su `url` |
 
 - `brecha-cero.html`: el juego (un solo archivo, sin dependencias, salvo Google Fonts).
 - `brecha-cero-jugar.html`: lo mismo envuelto en `<!doctype html>…` con viewport sin zoom. Es lo que se copia a `tsi-game/index.html`.
@@ -31,7 +31,8 @@ Documento para retomar el trabajo en un chat nuevo. Léelo completo antes de toc
 
 Jerarquía: **Capítulo › Sección › Misión › Minijuego › Ítem › Concepto**.
 
-- `CHAPTERS` (cerca de `renderTitle`): lista de capítulos del selector inicial. El capítulo 8 es `c8` con `ready:true`; el siguiente está como `next` con `ready:false` («En preparación»).
+- Orden de entrada: primero se elige la **partida** (P1–P3, contiene todos los capítulos) y después el **capítulo**.
+- `CHAPTERS` (cerca de `renderTitle`): lista de capítulos del selector. El capítulo 8 es `c8` con `ready:true`; el siguiente está como `next` con `ready:false` («En preparación»).
 - `C`: conceptos `{s, t, h, d, x}`: sección, título, gancho corto, definición del libro, ejemplo.
 - `SECTORS`: las secciones del capítulo 8 (Vulnerabilidad, Valor, Marco, Defensa y Simulacro). Cada misión tiene `name`, `m`, `brief` (conceptos que se muestran antes) y `phases` (minijuegos).
 - `MECH`: los minijuegos disponibles. Los que se usan hoy: Interceptar (`mcq`), Clasificar (`sort`), Circuito (`seq`), Diagrama (`drag`), Cableado (`wire`), Carrera (`run`), Descifrar (`word`), Escáner (`snake`), Auditor (`audit`), Contramedida (`tower`). Portero (`gate`) y Pares (`memo`) se convierten solos en Clasificar y Cableado.
@@ -42,7 +43,7 @@ Jerarquía: **Capítulo › Sección › Misión › Minijuego › Ítem › Con
 El selector ya existe, pero hoy solo abre el capítulo 8. Para que el capítulo nuevo funcione hay que:
 
 1. Mover `C` y `SECTORS` a un contenido por capítulo, por ejemplo `CHAPTERS[i].concepts` y `CHAPTERS[i].sectors`, y que el juego use los del capítulo elegido.
-2. Separar el guardado por capítulo (por ejemplo `brecha0:c9:save`) **sin tocar las claves actuales del capítulo 8**, para que nadie pierda su progreso.
+2. Guardar el avance de cada capítulo **dentro de la misma partida** (la partida contiene todo), sin romper las partidas actuales del capítulo 8: su avance debe seguir apareciendo.
 3. Separar ranking, repaso del día, colección de cartas y FAQ por capítulo donde corresponda.
 4. Elegir qué minijuegos usa el capítulo nuevo. Mantener la mayoría para que los alumnos no aprendan juegos nuevos. Interceptar es muy propio de seguridad y podría quedar fuera o recibir otra temática.
 5. Escribir el contenido desde el libro: conceptos con definición y ejemplo, 4 secciones y un simulacro final, igual que el capítulo 8.
