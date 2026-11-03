@@ -72,9 +72,12 @@ button:disabled{cursor:default}
 .faq-hi{margin:2px 0 12px;color:var(--mute);font-size:15px}
 .faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:4px}
 .faq-tile{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:96px;padding:14px;border:0;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--bg-2));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 40%,transparent);color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:transform .15s var(--out),box-shadow .15s}
-.faq-tile:hover,.faq-tile:focus-visible{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--c),0 8px 22px -10px var(--c)}
-.ft-e{font-size:26px;line-height:1}
-.ft-e.big{font-size:40px}
+.faq-tile:focus-visible{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--c),0 8px 22px -10px var(--c)}@media (hover:hover){.faq-tile:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--c),0 8px 22px -10px var(--c)}}
+.ft-e{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 55%,transparent)}
+.ft-e.big{width:56px;height:56px;border-radius:14px;flex:none}
+.ft-svg{width:24px;height:24px;fill:none;stroke:var(--c);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--c) 60%,transparent))}
+.ft-e.big .ft-svg{width:32px;height:32px}
+.ft-svg .f{fill:var(--c);stroke:none}
 .ft-t{font-weight:800;font-size:15px;line-height:1.2}
 .faq-head{display:flex;align-items:center;gap:14px;margin:8px 0 14px;padding:14px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,transparent)}
 .faq-head .faq-t{margin:0}
@@ -85,7 +88,7 @@ button:disabled{cursor:default}
 .faq-list li{border-bottom:1.5px solid var(--line)}
 .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 4px;background:none;border:0;color:var(--ink);font:inherit;font-weight:700;text-align:left;cursor:pointer}
 .faq-q b{color:var(--mute);font-family:var(--f-mono)}
-.faq-q:hover b{color:var(--safe)}
+@media (hover:hover){.faq-q:hover b{color:var(--safe)}}
 .faq-back{align-self:flex-start;margin:10px 0 4px;color:var(--mute)}
 .faq-t{margin:6px 0 8px;font-family:var(--f-display);font-size:clamp(20px,4.6vw,26px);line-height:1.15}
 .faq-a{margin:0 0 12px;line-height:1.5;color:var(--ink)}
@@ -100,19 +103,19 @@ button:disabled{cursor:default}
 .faq p{margin:0 4px 10px;line-height:1.45;color:var(--mute)}
 .faq .link{margin:0 4px 12px;color:var(--safe)}
 .icon-btn{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);transition:box-shadow .15s}
-.icon-btn:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.icon-btn:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--ink)}}
 .icon-btn:disabled{opacity:.3}
 .chip-btn{display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 16px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .15s}
-.chip-btn:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.chip-btn:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .chip-btn b{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;color:var(--safe)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:0 24px;background:var(--ink);color:var(--bg);font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;border-radius:3px;transition:translate .15s var(--out),background .2s}
-.btn:hover{translate:0 -2px}
+@media (hover:hover){.btn:hover{translate:0 -2px}}
 .btn:active{translate:0 1px}
 .btn .k{opacity:.55}
 .btn.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
-.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .link{color:var(--mute);padding:10px 0}
-.link:hover{color:var(--ink)}
+@media (hover:hover){.link:hover{color:var(--ink)}}
 
 /* the wire: shared by the title loop and Interceptar */
 .wire{position:relative;height:56px;flex:none}
@@ -161,7 +164,7 @@ button:disabled{cursor:default}
 .node-wrap:nth-child(2){align-items:flex-start}
 .node-wrap:last-child{align-items:flex-end}
 .node{position:relative;width:56px;height:56px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:17px;transition:scale .25s var(--spring),background .2s,color .2s}
-.node:hover{scale:1.08}
+@media (hover:hover){.node:hover{scale:1.08}}
 .node svg{position:absolute;inset:0;width:100%;height:100%;rotate:-90deg}
 .node circle{fill:none;stroke:var(--line);stroke-width:3;transition:stroke .3s}
 .node circle.on{stroke:var(--safe)}
@@ -181,7 +184,7 @@ button:disabled{cursor:default}
 .locked-note{margin:0;font-weight:700;color:var(--threat)}
 .rounds{list-style:none;margin:0;padding:0;flex:1;min-height:0;overflow:auto;border-top:1.5px solid var(--line);overscroll-behavior:contain}
 .round{width:100%;display:grid;grid-template-columns:2.6ch minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:15px 4px;border-bottom:1.5px solid var(--line);transition:background .15s,padding .2s var(--out)}
-.round:hover:not(:disabled){background:var(--bg-2);padding-left:12px}
+@media (hover:hover){.round:hover:not(:disabled){background:var(--bg-2);padding-left:12px}}
 .round:disabled{color:var(--mute)}
 .r-n{color:var(--mute)}
 .r-name{font-weight:700;font-size:18px;line-height:1.25}
@@ -189,6 +192,8 @@ button:disabled{cursor:default}
 .r-parts.on{color:var(--safe);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--safe) 55%,transparent)}
 .mm-part{display:inline-block;margin-left:10px;color:var(--mute);font-size:12px;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;white-space:nowrap}
 .r-ico{display:inline-flex;gap:6px;color:var(--mute)}
+/* a finished mission lights up its minigame icon */
+.round.is-done .r-ico{color:var(--case);filter:drop-shadow(0 0 5px color-mix(in srgb,var(--case) 70%,transparent))}
 .r-kind{color:var(--mute);font-size:11px}
 .round.is-next .r-n{color:var(--safe)}
 /* the next round says so in words instead of a blinking square */
@@ -255,7 +260,7 @@ button:disabled{cursor:default}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .opt{display:flex;align-items:center;gap:14px;min-height:60px;padding:10px 16px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;font-size:17px;line-height:1.25;transition:box-shadow .15s,background .15s,color .15s,scale .12s}
 .opt .k,.chip .k,.tile .k,.plug .k,.zone .k,.tool .k{display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:2px;background:var(--bg-2);color:var(--mute)}
-.opt:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.opt:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .opt:active{scale:.98}
 .opt.ok{background:var(--safe);color:var(--on-safe);box-shadow:none}
 .opt.ok .k{background:color-mix(in srgb,var(--on-safe) 22%,transparent);color:inherit}
@@ -305,7 +310,7 @@ button:disabled{cursor:default}
 @keyframes dotGlow{50%{scale:1.35}}
 .pool{display:flex;flex-direction:column;gap:8px}
 .chip{display:flex;align-items:center;gap:12px;min-height:52px;padding:10px 14px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;line-height:1.3;transition:opacity .25s,scale .25s,box-shadow .15s}
-.chip:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.chip:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .chip.used{opacity:0;scale:.95;pointer-events:none}
 .chip.gone{display:none}
 .chip.no{box-shadow:inset 0 0 0 2px var(--threat);color:var(--threat);animation:nudge .38s}
@@ -390,7 +395,7 @@ button:disabled{cursor:default}
 .jack{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 2px var(--ink)}
 .pl .jack{right:-7px}
 .pr .jack{left:-7px}
-.plug:hover,.plug.sel{box-shadow:inset 0 0 0 2px var(--ink)}
+.plug.sel{box-shadow:inset 0 0 0 2px var(--ink)}@media (hover:hover){.plug:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .plug.sel .jack{background:var(--safe);box-shadow:none}
 .plug.hot{box-shadow:inset 0 0 0 2.5px var(--safe)}
 .plug.done{box-shadow:inset 0 0 0 1.5px var(--safe);color:var(--safe);cursor:default}
@@ -431,7 +436,7 @@ button:disabled{cursor:default}
 .mc-f{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4px;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center}
 .mc-back{background:var(--bg-2);box-shadow:inset 0 0 0 1.5px var(--line)}
 .mc-back i{width:14px;height:14px;rotate:45deg;box-shadow:inset 0 0 0 2px var(--line)}
-.mc:hover .mc-back{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.mc:hover .mc-back{box-shadow:inset 0 0 0 2px var(--ink)}}
 .mc-front{transform:rotateY(180deg);background:var(--bg);box-shadow:inset 0 0 0 2px var(--ink)}
 .mc-front.t{font-family:var(--f-display);font-weight:600;font-size:13px;text-transform:uppercase;line-height:1.2;overflow-wrap:anywhere}
 .mc-front.d{font-size:14px;font-weight:700;line-height:1.3}
@@ -449,7 +454,7 @@ button:disabled{cursor:default}
 .gap{flex:0 0 14px}
 .wd-tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:600px;margin-inline:auto}
 .tile{width:50px;height:54px;display:grid;place-items:center;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--line);font-family:var(--f-mono);font-weight:600;font-size:21px;transition:opacity .2s,scale .2s,box-shadow .15s}
-.tile:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.tile:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .tile.scr{color:var(--mute)}
 .tile.used{opacity:0;scale:.7;pointer-events:none}
 .tile.no{animation:nudge .35s;box-shadow:inset 0 0 0 2px var(--threat);color:var(--threat)}
@@ -524,7 +529,7 @@ button:disabled{cursor:default}
 .au{justify-content:center;gap:26px}
 .au-s{margin:0;font-size:clamp(22px,3.6vw,34px);line-height:1.5;font-weight:700;max-width:32ch;text-wrap:pretty}
 .seg{display:inline;padding:0 2px;border-radius:2px;background-image:linear-gradient(var(--line),var(--line));background-size:100% 2px;background-position:0 100%;background-repeat:no-repeat;transition:background-color .15s,color .15s;animation:chipIn .35s var(--out) both;animation-delay:calc(var(--i) * 22ms)}
-.seg:hover{background-color:var(--bg-2)}
+@media (hover:hover){.seg:hover{background-color:var(--bg-2)}}
 .seg.caught{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--threat);text-decoration-thickness:3px;background-image:none}
 .seg.no{color:var(--threat);animation:nudge .38s}
 .fix{display:inline-block;margin-left:8px;color:var(--safe);animation:fixIn .45s var(--spring) both}
@@ -543,7 +548,7 @@ button:disabled{cursor:default}
 .tw-tools{flex:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 @media (max-width:700px){.tw-tools{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .tool{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-height:62px;padding:9px 10px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;font-size:14px;line-height:1.15;transition:box-shadow .15s,background .15s,color .15s}
-.tool:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.tool:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .tool.fire{animation:toolFire .4s var(--out)}
 @keyframes toolFire{0%{background:var(--safe);color:var(--on-safe)}}
 .tool.no{animation:toolNo .5s}
@@ -568,11 +573,18 @@ button:disabled{cursor:default}
 .sh-sub{margin:0;color:var(--mute)}
 .sh-why{margin:0;font-size:18px;line-height:1.5;max-width:62ch;text-wrap:pretty}
 .sheet-panel .btn{align-self:flex-start;margin-top:6px}
+.rep-link{display:inline-flex;align-items:center;justify-content:center;align-self:center;min-height:36px;margin-top:6px;padding:0 16px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);background:color-mix(in srgb,var(--bg-2) 70%,transparent);color:var(--mute);font-size:13px;font-weight:700;text-decoration:none}
+@media (hover:hover){.rep-link:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}}
+.sheet-panel .rep-link{align-self:flex-start}
+#pa-rep{margin:4px 0 0}
 .pause{justify-content:center;gap:18px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:enter .3s var(--out)}
 .pause-t{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(34px,7vw,64px);letter-spacing:-.035em;text-transform:uppercase;line-height:.95}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .intro{justify-content:center;gap:14px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);cursor:pointer}
 .intro .mono{margin:0;color:var(--mute)}
+.intro{align-items:center;text-align:center}
+.intro > *{max-width:640px}
+.intro .demo{margin-inline:auto}
 .intro-ico{width:40px;height:40px;color:var(--safe);stroke-width:1.4;animation:rise .5s var(--out) both}
 .intro-name{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(40px,10vw,96px);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;animation:rise .55s var(--out) both}
 .intro-d{margin:0;font-size:clamp(18px,2.5vw,21px);line-height:1.45;max-width:40ch;animation:rise .55s .08s var(--out) both;text-wrap:pretty}
@@ -587,8 +599,8 @@ button:disabled{cursor:default}
 #hitflash{position:fixed;inset:0;z-index:49;pointer-events:none;box-shadow:inset 0 0 0 7px var(--threat);opacity:0}
 #hitflash.go{animation:flash .5s var(--out)}
 @keyframes flash{0%{opacity:1}100%{opacity:0}}
-.popt{position:fixed;z-index:60;pointer-events:none;font-family:var(--f-mono);font-weight:600;font-size:16px;color:var(--safe);translate:-50% -50%;animation:popUp .9s var(--out) forwards}
-@keyframes popUp{0%{opacity:0;translate:-50% -30%;scale:.8}20%{opacity:1;translate:-50% -90%;scale:1.15}100%{opacity:0;translate:-50% -230%;scale:1}}
+.popt{position:fixed;z-index:60;pointer-events:none;font-family:var(--f-mono);font-weight:600;font-size:16px;color:var(--safe);translate:-50% -50%;animation:popUp 1.5s var(--out) forwards}
+@keyframes popUp{0%{opacity:0;translate:-50% -30%;scale:.8}12%{opacity:1;translate:-50% -90%;scale:1.15}20%{scale:1}75%{opacity:1;translate:-50% -170%}100%{opacity:0;translate:-50% -230%;scale:1}}
 
 /* end */
 #s-end{justify-content:center}
@@ -669,7 +681,7 @@ button:disabled{cursor:default}
 .opt.ok .o-vis{background:var(--bg)}
 .q-vis{display:block;width:min(280px,66vw);padding:8px 14px;border-radius:4px;background:var(--bg-2)}
 .rn .q-vis{width:min(210px,50vw)}
-.clue.vis{max-width:none}
+.clue.vis,.clue,.clue.sm,.clue.xs{max-width:none;width:100%;text-wrap:wrap}
 .door .g{flex:none}
 .bin-head .g{margin-top:6px;width:clamp(64px,10vw,112px);height:auto}
 .seq-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -741,7 +753,9 @@ button:disabled{cursor:default}
 .story-tag{margin:0;color:var(--safe)}
 .story-term{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(30px,8vw,52px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;overflow-wrap:break-word;text-wrap:balance}
 .story-hook{margin:0;font-size:clamp(19px,4.4vw,24px);line-height:1.3;font-weight:700;text-wrap:pretty}
-.story-def{margin:0;font-size:clamp(15px,3.6vw,18px);line-height:1.45;color:var(--ink);text-wrap:pretty}
+.story-def{margin:0;font-size:clamp(15px,3.6vw,18px);line-height:1.45;color:var(--ink);text-wrap:wrap;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.story-ex{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.story-ex b{text-align:left}
 .story-ex{margin:0;padding:10px 12px;border-radius:8px;background:color-mix(in srgb,var(--case) 10%,transparent);box-shadow:inset 3px 0 0 var(--case);font-size:clamp(14px,3.3vw,16px);line-height:1.4;color:var(--mute)}
 .story-ex b{display:block;margin-bottom:3px;color:var(--case);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 .story:not(.vs):not(.case-open) .story-vis{width:min(220px,56%)}
@@ -751,6 +765,19 @@ button:disabled{cursor:default}
 .story-d{margin:0;font-size:18px;line-height:1.45;text-wrap:pretty}
 .st-hint{margin:0;color:var(--mute);text-align:center;flex:none}
 .b-head{display:flex;flex-direction:column;gap:4px;min-width:0}
+.b-head [hidden]{display:none!important}
+#s-brief .bar{position:relative}
+.b-rep{position:absolute;left:50%;top:50%;translate:-50% -50%;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);color:var(--mute);cursor:pointer}
+.p-rep{width:34px;height:34px;color:var(--mute)}
+.p-rep svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.b-rep svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.b-rep:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}}
+.b-conf{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.b-conf[hidden]{display:none}
+.b-conf-box{width:min(340px,100%);display:flex;flex-direction:column;gap:16px;padding:20px;border-radius:12px;background:var(--bg-2);box-shadow:inset 0 0 0 1.5px var(--line),0 20px 40px -16px #000;text-align:center}
+.b-conf-box p{margin:0;font-weight:700;font-size:16px;line-height:1.35}
+.b-conf-act{display:flex;gap:10px}
+.b-conf-act .btn{flex:1;justify-content:center;text-decoration:none}
 .b-sub{font-family:var(--f-display);font-weight:800;font-size:clamp(17px,2.4vw,22px);letter-spacing:-.01em;text-transform:uppercase;color:var(--case);text-shadow:0 0 18px color-mix(in srgb,var(--case) 45%,transparent)}
 
 .clock{font-family:var(--f-mono);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;padding:5px 8px;border-radius:3px;background:var(--bg-2)}
@@ -907,14 +934,14 @@ html.beast .logo span+span{-webkit-text-stroke-color:var(--hype)}
 .fbar i{display:block;height:100%;background:var(--hype);transform-origin:left;transform:scaleX(0);transition:transform .2s var(--out)}
 .fbar.on i{transition:none}
 .hype{position:absolute;left:50%;top:42%;z-index:15;pointer-events:none;font-family:var(--f-display);font-weight:800;font-size:clamp(34px,9vw,76px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;white-space:nowrap;color:var(--hype);-webkit-text-stroke:6px var(--bg);paint-order:stroke fill;translate:-50% -50%;opacity:0}
-.hype.go{animation:hypeIn .8s var(--out) forwards}
+.hype.go{animation:hypeIn 1.6s var(--out) forwards}
 .hype.bad{color:var(--threat)}
 .hype.win{color:var(--case);white-space:normal;text-align:center;width:max-content;max-width:92vw}
 .hype.win::after{content:"superada";display:block;margin-top:6px;font-size:.42em;letter-spacing:.12em;color:var(--ink)}
-.hype.win.go{animation:hypeWin 1.4s var(--out) forwards}
+.hype.win.go{animation:hypeWin 2.3s var(--out) forwards}
 #stage.cheer{opacity:.18;filter:blur(3px);transition:opacity .3s,filter .3s}
-@keyframes hypeWin{0%{opacity:0;scale:.4}12%{opacity:1;scale:1.15}22%{scale:1}80%{opacity:1}100%{opacity:0;translate:-50% -70%}}
-@keyframes hypeIn{0%{opacity:0;scale:.5}15%{opacity:1;scale:1.12}28%{scale:1}70%{opacity:1}100%{opacity:0;translate:-50% -90%}}
+@keyframes hypeWin{0%{opacity:0;scale:.4}8%{opacity:1;scale:1.15}15%{scale:1}84%{opacity:1;scale:1.04}100%{opacity:0;translate:-50% -70%}}
+@keyframes hypeIn{0%{opacity:0;scale:.5}8%{opacity:1;scale:1.12}15%{scale:1}82%{opacity:1;scale:1.05}100%{opacity:0;translate:-50% -90%}}
 .popt.crit{color:var(--hype);font-size:19px}
 .stage.jolt{animation:jolt .16s var(--out)}
 @keyframes jolt{40%{translate:0 -3px}}
@@ -1107,7 +1134,7 @@ html.fever{--safe:var(--hype)!important}
 /* ===== title: two mode cards and a big play button ===== */
 .mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:720px}
 .mode-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 46px 16px 18px;border-radius:8px;background:var(--bg);box-shadow:inset 0 0 0 2px var(--line);text-align:left;transition:box-shadow .2s,background .2s,translate .15s var(--out)}
-.mode-card:hover{translate:0 -2px}
+@media (hover:hover){.mode-card:hover{translate:0 -2px}}
 .mode-card::after{content:"";position:absolute;top:17px;right:16px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--line);transition:box-shadow .2s}
 .mc-n{font-family:var(--f-display);font-weight:800;font-size:clamp(20px,4.6vw,30px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
 .mc-d{font-size:clamp(13.5px,1.6vw,16px);line-height:1.4;color:var(--mute);text-wrap:pretty}
@@ -1126,7 +1153,7 @@ html.fever{--safe:var(--hype)!important}
 .album{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
 @media (max-width:440px){.album{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .fc{position:relative;display:flex;flex-direction:column;gap:6px;height:158px;padding:8px;border-radius:10px;background:var(--bg);box-shadow:inset 0 0 0 2px var(--ink);text-align:left;overflow:hidden;min-width:0;transition:translate .15s var(--out),box-shadow .2s}
-.fc:hover{translate:0 -3px}
+@media (hover:hover){.fc:hover{translate:0 -3px}}
 .fc-top{display:flex;justify-content:space-between;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
 .fc-art{flex:1;min-height:0;display:grid;place-items:center;border-radius:6px;background:var(--bg-2)}
 .fc-art .g{width:86%;height:auto;max-height:100%}
@@ -1178,7 +1205,7 @@ html.fever{--safe:var(--hype)!important}
 /* answers, tools and bins wear the case colour */
 .opt,.tool{background:color-mix(in srgb,var(--case,var(--safe)) 7%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--case,var(--safe)) 45%,var(--line))}
 .opt .k,.tool .k{background:color-mix(in srgb,var(--case,var(--safe)) 22%,var(--bg-2));color:var(--ink)}
-.opt:hover,.tool:hover{box-shadow:inset 0 0 0 2px var(--case,var(--safe)),0 0 14px color-mix(in srgb,var(--case,var(--safe)) 35%,transparent)}
+@media (hover:hover){.opt:hover,.tool:hover{box-shadow:inset 0 0 0 2px var(--case,var(--safe)),0 0 14px color-mix(in srgb,var(--case,var(--safe)) 35%,transparent)}}
 .opt.ok{background:var(--safe);color:var(--on-safe);box-shadow:0 0 18px color-mix(in srgb,var(--safe) 55%,transparent)}
 .opt.no{background:color-mix(in srgb,var(--threat) 12%,transparent);box-shadow:inset 0 0 0 2px var(--threat)}
 .opt.reveal{box-shadow:inset 0 0 0 2.5px var(--safe)}
@@ -1208,10 +1235,10 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .t-slots{display:flex;flex-direction:column;gap:10px;width:100%;max-width:540px}
 .t-pick{margin:0 0 2px;color:var(--gold)!important;letter-spacing:.2em;animation:blink 1.6s ease-in-out infinite}
 .pslot{display:flex;align-items:center;gap:14px;min-height:70px;padding:10px 16px;border-radius:6px;background:color-mix(in srgb,var(--bg-2) 70%,transparent);box-shadow:inset 0 0 0 1.5px var(--line);text-align:left;transition:translate .15s var(--out),box-shadow .2s}
-.pslot:hover,.pslot:focus-visible{translate:4px 0;box-shadow:inset 0 0 0 2px var(--c),0 0 26px -8px var(--c);outline:none}
+.pslot:focus-visible{translate:4px 0;box-shadow:inset 0 0 0 2px var(--c),0 0 26px -8px var(--c);outline:none}@media (hover:hover){.pslot:hover{translate:4px 0;box-shadow:inset 0 0 0 2px var(--c),0 0 26px -8px var(--c);outline:none}}
 .pslot.last{box-shadow:inset 0 0 0 2px var(--c),0 0 26px -10px var(--c)}
 .pslot.empty{background:transparent;box-shadow:none;outline:1.5px dashed var(--line);outline-offset:-1.5px}
-.pslot.empty:hover,.pslot.empty:focus-visible{outline-color:var(--c)}
+.pslot.empty:focus-visible{outline-color:var(--c)}@media (hover:hover){.pslot.empty:hover{outline-color:var(--c)}}
 .sl-p{flex:none;width:42px;font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--c);text-shadow:0 0 14px color-mix(in srgb,var(--c) 60%,transparent)}
 .sl-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
 .sl-n{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1241,7 +1268,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .ns-top{display:flex;align-items:center;gap:14px}
 .ns-top .t-pick{margin:0}
 .ns-back{flex:none;min-height:40px;padding:0 14px 0 10px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);font-family:var(--f-display);font-weight:800;font-size:13px;text-transform:uppercase;color:var(--ink)}
-.ns-back:hover{box-shadow:inset 0 0 0 2px var(--c)}
+@media (hover:hover){.ns-back:hover{box-shadow:inset 0 0 0 2px var(--c)}}
 .ns-go{width:100%;min-height:64px;margin-top:6px;justify-content:center}
 /* bigger slots: taller rows on phones, three big cabinets side by side on wide screens */
 .t-slots{max-width:none;flex:none}
@@ -1257,7 +1284,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
   .t-slots>.newslot{grid-column:1/-1;grid-row:1/-1}
   .t-pick{grid-column:1/-1}
   .pslot{flex-direction:column;align-items:stretch;gap:12px;min-height:170px;height:100%;padding:20px 22px;border-radius:10px}
-  .pslot:hover,.pslot:focus-visible{translate:0 -6px}
+  .pslot:focus-visible{translate:0 -6px}@media (hover:hover){.pslot:hover{translate:0 -6px}}
   .sl-p{width:auto;font-size:clamp(34px,4.6vw,54px);line-height:1}
   .sl-n{font-size:clamp(20px,2.2vw,26px)}
   .sl-m{font-size:12px;white-space:normal}
@@ -1275,7 +1302,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 @media (min-width:760px) and (max-height:760px){#attract{height:84px}#s-title{gap:12px}}
 /* the map's home button */
 .home-b{display:inline-flex;align-items:center;gap:8px;min-width:0;max-width:48vw;min-height:44px;padding:0 14px 0 11px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);font-family:var(--f-display);font-weight:800;font-size:13px;text-transform:uppercase;transition:box-shadow .2s}
-.home-b:hover{box-shadow:inset 0 0 0 2px var(--c)}
+@media (hover:hover){.home-b:hover{box-shadow:inset 0 0 0 2px var(--c)}}
 .home-b svg,.pf-slot-act svg{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .hb-p{color:var(--c)}
 .hb-n{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1294,9 +1321,9 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .btn.ghost.danger{color:var(--threat);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--threat) 60%,transparent)}
 .t-set{position:absolute;top:0;right:56px;z-index:2}
 #m-sound svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:rotate .4s var(--out)}
-#m-sound:hover svg{rotate:60deg}
+@media (hover:hover){#m-sound:hover svg{rotate:60deg}}
 .t-set svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:rotate .4s var(--out)}
-.t-set:hover svg{rotate:60deg}
+@media (hover:hover){.t-set:hover svg{rotate:60deg}}
 .tg-l{display:flex;flex-direction:column;gap:3px}
 .tg-l small{font-weight:400;font-size:13px;line-height:1.35;color:var(--mute)}
 .set-box{display:flex;flex-direction:column;gap:14px;width:min(440px,100%)}
@@ -1308,7 +1335,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 :is(#sector,.sec-ghost):has(> .mm){flex:1 0 auto;display:flex;flex-direction:column}
 :is(#sector,.sec-ghost) > .mm{flex:1 0 auto}
 :is(#sector,.sec-ghost) > .mm > .mm-cta{margin-top:auto;padding-top:14px}
-:is(#sector,.sec-ghost) > .mm > .mm-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;max-width:560px;gap:10px}
+:is(#sector,.sec-ghost) > .mm > .mm-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;gap:10px}
 :is(#sector,.sec-ghost) > .mm > .mm-cta > .btn{width:100%;min-width:0;min-height:58px;padding-inline:14px}
 :is(#sector,.sec-ghost) > .mm > .mm-cta > .mm-links{grid-column:1/-1;min-height:28px;justify-content:center}
 /* the miss explanation takes most of the screen: bigger term, text and picture, the button at the bottom */
@@ -1403,7 +1430,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .hud-l{display:flex;align-items:center;gap:8px}
 .hud-back{display:inline-flex;align-items:center;gap:4px;height:42px;padding:0 14px 0 10px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .hud-back svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.hud-back:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover){.hud-back:hover{box-shadow:inset 0 0 0 2px var(--ink)}}
 .in-back{position:absolute;top:0;left:0;z-index:2;background:var(--bg)}
 #sector,#map-scroll{touch-action:pan-y}
 /* the mission's time shows only as the line at the bottom: no number in the game bar */
@@ -1411,7 +1438,7 @@ body{background:radial-gradient(60% 45% at 8% 0%,color-mix(in srgb,#ff36d9 22%,t
 .map-scroll{position:relative;overflow-x:hidden}
 .sec-ghost{position:absolute;margin:0;pointer-events:none;z-index:0}
 #b-skip{flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);background:color-mix(in srgb,var(--bg-2) 70%,transparent);color:var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
-#b-skip:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media (hover:hover){#b-skip:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}}
 /* flashcards keep the same portrait shape as the big card on every screen (3 per row on phones) */
 .album{grid-auto-rows:max-content}
 .album .fc{height:auto;aspect-ratio:5/7}
@@ -1472,11 +1499,14 @@ p.rc-item.rc-plain{padding:10px 12px}
 .pf-namebox{flex:1;min-width:0;display:flex;align-items:center;gap:8px;cursor:text}
 .pf-namebox .pf-name{flex:0 1 auto;min-width:3ch;max-width:100%;field-sizing:content}
 .pf-pen{flex:none;width:18px;height:18px;fill:none;stroke:var(--mute);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s}
-.pf-namebox:hover .pf-pen{stroke:var(--ink)}
+@media (hover:hover){.pf-namebox:hover .pf-pen{stroke:var(--ink)}}
 .pf-namebox:focus-within .pf-pen{opacity:0}
 .pf-player .pf-name{border-bottom-color:transparent}
 .pf-player .pf-name:focus{border-bottom-color:var(--gold)}
 .in-brief{align-self:flex-start;min-height:44px}
+.intro.is-wait{cursor:default;padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+.in-foot{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:28px;max-width:none!important}
+.in-foot .tap-on.go-pill,.in-foot .in-brief{align-self:center;cursor:pointer}
 /* Perfil, folded */
 .pf-card{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:10px;background:color-mix(in srgb,var(--bg-2) 70%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 45%,var(--line)),0 0 30px -16px var(--c)}
 .pf-card .pf-head{gap:12px}
@@ -1594,10 +1624,10 @@ body::before{content:"";position:fixed;left:-10%;right:-10%;bottom:-8%;height:50
 html.fever body::before{opacity:.7;animation-duration:.8s}
 /* buttons: lift, shine, breathe */
 .btn{position:relative;overflow:hidden;transition:translate .15s var(--out),box-shadow .2s,scale .1s}
-.btn:hover{translate:0 -2px}
+@media (hover:hover){.btn:hover{translate:0 -2px}}
 .btn:active{scale:.96}
 .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);translate:-120% 0;pointer-events:none}
-.btn:hover::after{animation:shine .7s var(--out)}
+@media (hover:hover){.btn:hover::after{animation:shine .7s var(--out)}}
 @keyframes shine{to{translate:120% 0}}
 .mm-play{animation:breathe 1.8s ease-in-out infinite}
 @keyframes breathe{50%{box-shadow:0 0 34px -4px var(--case)}}
@@ -1606,7 +1636,7 @@ html.fever body::before{opacity:.7;animation-duration:.8s}
 .logo span:first-child{animation:logoGlitch 5s infinite}
 @keyframes logoGlitch{0%,92%,100%{translate:0;filter:drop-shadow(0 0 18px color-mix(in srgb,#ff36d9 45%,transparent))}93%{translate:-3px 1px;filter:drop-shadow(3px 0 0 #00e0ff) drop-shadow(-3px 0 0 #ff36d9)}95%{translate:3px -1px}97%{translate:-1px 0;filter:drop-shadow(-2px 0 0 #00e0ff)}}
 .opt,.tool{transition:box-shadow .15s,background .15s,color .15s,scale .12s,translate .15s}
-.opt:hover,.tool:hover{translate:0 -2px}
+@media (hover:hover){.opt:hover,.tool:hover{translate:0 -2px}}
 .opt.ok{animation:okPop .35s var(--spring)}
 @keyframes okPop{40%{scale:1.05}}
 .grade{text-shadow:0 0 40px var(--hype)}
@@ -1652,16 +1682,17 @@ html.touch .opt:active,html.touch .tool:active{scale:.96;box-shadow:inset 0 0 0 
     </div>
   </section>
 
+  <div class="b-conf" id="b-conf" hidden><div class="b-conf-box" role="dialog" aria-label="Reportar un error"><p id="b-conf-q">¿Quieres reportar un error en esta tarjeta?</p><div class="b-conf-act"><button class="btn ghost" id="b-conf-no">Cancelar</button><a class="btn" id="b-conf-go" target="_blank" rel="noopener">Reportar</a></div></div></div>
   <section id="s-brief" class="screen" hidden>
     <div class="st-bars" id="st-bars"></div>
-    <header class="bar"><span class="b-head"><span class="mono" id="b-where"></span><span class="b-sub" id="b-sub"></span></span><button class="mono link" id="b-skip">Saltar ›</button></header>
+    <header class="bar"><span class="b-head"><span class="mono" id="b-where" hidden></span><span class="b-sub" id="b-sub" hidden></span></span><button class="b-rep" id="b-rep" aria-label="Reportar un error"><svg viewBox="-9 -9 18 18" aria-hidden="true"><path d="M-4 7V-7M-4-6h8l-2 3 2 3h-8"/></svg></button><button class="mono link" id="b-skip">Saltar ›</button></header>
     <div class="st-stage" id="deck"></div>
     <p class="mono st-hint" id="st-hint"></p>
   </section>
 
   <section id="s-play" class="screen" hidden>
     <header class="hud">
-      <div class="hud-l"><button class="icon-btn" id="p-pause" aria-label="Pausa"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.2" height="12" fill="currentColor"/><rect x="8.8" y="1" width="3.2" height="12" fill="currentColor"/></svg></button></div>
+      <div class="hud-l"><button class="icon-btn" id="p-pause" aria-label="Pausa"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.2" height="12" fill="currentColor"/><rect x="8.8" y="1" width="3.2" height="12" fill="currentColor"/></svg></button><button class="icon-btn p-rep" id="p-rep" aria-label="Reportar un error"><svg viewBox="-9 -9 18 18" aria-hidden="true"><path d="M-4 7V-7M-4-6h8l-2 3 2 3h-8"/></svg></button></div>
       <div class="hud-mid"><span class="sr" id="p-where"></span><div class="dots" id="p-dots" aria-hidden="true"></div></div>
       <div class="hud-r"><span class="clock" id="p-clock" aria-label="Tiempo">0:45</span><div class="shields" id="p-shields" aria-label="Escudos"></div><div class="score"><span id="p-score">0</span><span class="mult" id="p-mult">×1</span></div></div>
       <div class="fbar" id="p-fever" hidden><i></i></div>
@@ -1685,6 +1716,7 @@ html.touch .opt:active,html.touch .tool:active{scale:.96;box-shadow:inset 0 0 0 
     <header class="bar"><h2 class="tab-title">Flashcards</h2><span class="mono" id="a-count"></span></header>
     <p class="mono arch-sub">Toca una carta para verla en grande y voltearla. Cada misión cumplida te da las suyas.</p>
     <p class="arch-net" id="a-net"></p>
+    <style>.a-why{display:block;margin-top:4px;color:var(--mute);font-size:13px;line-height:1.35;font-weight:400}</style>
     <div class="tabs" id="a-tabs" role="tablist"></div>
     <span class="xpbar a-bar"><i id="a-bar"></i></span>
     <div class="album" id="a-list"></div>
@@ -1771,9 +1803,10 @@ const C = {
   controles:{s:2,t:"Controles",h:"Reglas que mantienen todo correcto y registrado",d:"Métodos, políticas y procedimientos organizacionales que garantizan tres cosas: la seguridad de los activos de la organización, la precisión y confiabilidad de sus registros y que las operaciones cumplan los estándares gerenciales.",x:"Seguridad protege; control asegura que todo se haga y se registre correctamente."},
   valorneg:{s:2,t:"Valor de negocios",h:"Sin seguridad, el negocio puede quebrar",d:"La seguridad no genera ventas directas, pero protege activos de información muy valiosos (datos de clientes, finanzas, planes, secretos). Si los sistemas fallan o se filtran, la empresa puede perder ventas y no recuperarse. Un buen marco de seguridad y control rinde mucho sobre la inversión, aumenta la productividad y baja los costos.",x:"Se estima que el 40% de los negocios no se recupera si pierde aplicaciones o datos por más de tres días."},
   responsabilidad:{s:2,t:"Responsabilidad legal",h:"Si filtras datos ajenos, te pueden demandar",d:"La empresa debe proteger no solo sus datos, sino también los de sus clientes, empleados y socios. Si no toma medidas razonables y los datos se filtran, roban o corrompen, puede ser demandada y pagar compensaciones.",x:"BJ's Wholesale Club pagó US$13 millones a los bancos por tarjetas robadas de sus sistemas."},
-  hipaa:{s:2,t:"HIPAA",h:"Ley que protege los datos de salud",d:"Ley de responsabilidad y portabilidad de los seguros médicos (EE. UU., 1996). Fija reglas de seguridad y privacidad para la información de los pacientes, exige conservarla seis años y protegerla, y penaliza divulgarla por correo o permitir accesos no autorizados.",x:"Aplica a toda empresa de servicios médicos que maneje datos de pacientes."},
-  glb:{s:2,t:"Ley Gramm-Leach-Bliley",h:"Ley que protege los datos de clientes bancarios",d:"Ley Gramm-Leach-Bliley, o de modernización de servicios financieros (EE. UU., 1999). Obliga a las instituciones financieras a garantizar la seguridad y confidencialidad de los datos de sus clientes, guardándolos en un medio seguro y protegiéndolos tanto almacenados como en transmisión.",x:"Aplica a bancos, aseguradoras y empresas de servicios financieros."},
-  sox:{s:2,t:"Ley Sarbanes-Oxley",h:"Ley que exige finanzas confiables en empresas en bolsa",d:"Ley Sarbanes-Oxley (EE. UU., 2002), creada tras los escándalos de Enron y WorldCom para proteger a los inversionistas. Hace responsables a la empresa y su gerencia de la precisión e integridad de la información financiera, por eso exige controles internos sobre los sistemas que generan los estados financieros.",x:"Aplica a toda empresa que cotiza en la bolsa."},
+  hipaa:{s:2,t:"HIPAA",h:"Ley de datos de salud",d:"Tipo de ley que existe en muchos países: los datos médicos de los pacientes exigen protección especial. HIPAA es el ejemplo del libro (EE. UU., 1996): fija reglas de seguridad y privacidad para la información de pacientes, exige conservarla seis años y castiga divulgarla.",x:"Aplica a clínicas, hospitales, aseguradoras de salud y a quien maneje datos de pacientes."},
+  glb:{s:2,t:"Ley Gramm-Leach-Bliley",h:"Ley de datos de clientes financieros",d:"Tipo de ley que obliga a bancos y financieras a proteger los datos de sus clientes, tanto guardados como cuando viajan por la red. Gramm-Leach-Bliley es el ejemplo del libro (EE. UU., 1999).",x:"Aplica a bancos, aseguradoras y empresas de servicios financieros."},
+  sox:{s:2,t:"Ley Sarbanes-Oxley",h:"Ley de controles financieros",d:"Tipo de ley que hace responsables a las empresas en bolsa de que su información financiera sea precisa, y les exige controles internos que lo demuestren. Sarbanes-Oxley es el ejemplo del libro (EE. UU., 2002), creada tras los fraudes de Enron y WorldCom.",x:"También rige para empresas extranjeras, incluidas latinoamericanas, que transan acciones en EE. UU."},
+  rgpd:{s:2,t:"Ley de protección de datos personales",h:"Tus datos personales son tuyos y la ley los protege",d:"Tipo de ley general, no de un solo sector: toda organización que trata datos personales debe pedir consentimiento, usarlos solo para lo declarado, protegerlos y avisar si se filtran. El referente mundial es el RGPD (GDPR) de la Unión Europea, que inspiró leyes en muchos países.",x:"El RGPD multa hasta el 4% de la facturación mundial de la empresa."},
   evidencia:{s:2,t:"Evidencia electrónica",h:"Datos digitales que sirven en un juicio",d:"Datos digitales que se usan como prueba en un juicio: correos, mensajes, archivos y transacciones. Cuando un juez la solicita, la empresa está obligada por ley a entregarla; si los datos están desordenados, dañados o destruidos, responder cuesta caro y puede haber castigos.",x:"Hoy el correo electrónico es el tipo más común de evidencia electrónica."},
   retencion:{s:2,t:"Política de retención",h:"Cuánto tiempo guardar cada documento",d:"Política que asegura que los documentos electrónicos, correos y registros estén bien organizados y accesibles, y que no se guarden demasiado tiempo ni se descarten demasiado pronto. También preserva la evidencia que podría necesitar un análisis forense.",x:"Los tribunales castigan la destrucción inapropiada de documentos electrónicos."},
   forense:{s:2,t:"Análisis forense de sistemas",h:"Rescatar y analizar datos para un juicio",d:"Análisis forense de sistemas: recolectar, examinar, autenticar, preservar y analizar científicamente datos de medios de almacenamiento para usarlos como evidencia en un juzgado. Recupera datos sin dañar su valor de prueba, los guarda con seguridad, encuentra lo importante entre muchos datos y lo presenta al tribunal.",x:"La empresa debería incluirlo en su plan de contingencia, junto al CIO, seguridad y asesores legales."},
@@ -1971,8 +2004,8 @@ const SECTORS = [
     { type:"memo", pairs:[
       {c:"seguridad",d:"Medidas que evitan acceso no autorizado, robo o daño"},
       {c:"controles",d:"Aseguran activos y registros precisos y confiables"},
-      {c:"valorneg",d:"Sin ella, la empresa puede dejar de operar"},
-      {c:"responsabilidad",d:"BJ's pagó US$13 millones por datos robados"}
+      {c:"valorneg",d:"La seguridad rinde: evita pérdidas, sube la productividad y baja costos"},
+      {c:"responsabilidad",d:"Si no protege los datos de terceros, la empresa puede ser demandada"}
     ]},
     { type:"mcq", items:[
       {q:"Además de evitar pérdidas, ¿qué más logra un buen marco de seguridad y control?",tag:"¿Qué aporta?",o:["Sube la productividad y baja los costos de operación","Elimina la necesidad de auditorías","Garantiza riesgo cero","Reemplaza a los controles de aplicación"],a:"Sube la productividad y baja los costos de operación",c:"valorneg"},
@@ -1980,7 +2013,7 @@ const SECTORS = [
       {q:"¿Por qué una falla de seguridad puede ser fatal para un negocio?",tag:"¿Por qué?",o:["Sin sus sistemas no puede vender ni operar","El antivirus deja de funcionar","La ley prohíbe volver a operar","Se pierde la garantía del hardware"],a:"Sin sus sistemas no puede vender ni operar",c:"valorneg"}
     ]}
   ]},
-  { name:"¿Qué ley aplica?", m:"Tres empresas, tres leyes. No te equivoques.", brief:["hipaa","glb","sox",{vs:["hipaa","glb","sox"],d:"Cada ley protege un tipo distinto de información: la salud de los pacientes (HIPAA), los datos de clientes de bancos (Gramm-Leach-Bliley) y la información financiera de empresas en bolsa (Sarbanes-Oxley)."}], phases:[{ type:"drag", tag:"Leyes de EE. UU.", title:"Arrastra cada caso a la ley que lo regula.",
+  { name:"¿Qué ley aplica?", m:"Tres empresas, tres leyes. No te equivoques.", brief:["rgpd","hipaa","glb","sox",{vs:["hipaa","glb","sox"],d:"Cada ley protege un tipo distinto de información: la salud de los pacientes (HIPAA), los datos de clientes de bancos (Gramm-Leach-Bliley) y la información financiera de empresas en bolsa (Sarbanes-Oxley)."}], phases:[{ type:"drag", tag:"Leyes de EE. UU.", title:"Arrastra cada caso a la ley que lo regula.",
     zones:[{l:"HIPAA",c:"hipaa"},{l:"Gramm-Leach-Bliley",c:"glb"},{l:"Sarbanes-Oxley",c:"sox"}],
     chips:[
       {x:"Una clínica guarda historiales por seis años",z:0},
@@ -2071,7 +2104,7 @@ const SECTORS = [
       items:[
       {q:"¿Cómo se obtiene la pérdida anual esperada de un riesgo?",o:["Probabilidad × pérdida promedio","Probabilidad + pérdida promedio","Pérdida máxima × 12 meses","Solo la pérdida máxima"],a:"Probabilidad × pérdida promedio",c:"riesgo",w:"La pérdida anual esperada combina qué tan probable es el evento y cuánto cuesta en promedio cuando ocurre. Por ejemplo, 30% × $102.500 = $30.750 al año."},
       {q:"Una malversación cuesta entre $1.000 y $50.000 cada vez. ¿Qué valor se usa como pérdida promedio?",o:["El punto medio del rango","El valor más alto","El valor más bajo","La suma de ambos extremos"],a:"El punto medio del rango",c:"riesgo",w:"Laudon usa el punto medio del rango como pérdida promedio: ($1.000 + $50.000) ÷ 2 = $25.500."},
-      {q:"Errores de usuarios: $19.698 al año. Malversación: $1.275 al año. ¿Dónde conviene poner más controles?",o:["En los errores de usuarios","En la malversación","En ambos por igual","En ninguno"],a:"En los errores de usuarios",c:"riesgo",w:"Los controles van donde la pérdida anual esperada es mayor. La malversación cuesta más por evento, pero es tan poco probable (5%) que al año pesa mucho menos que los errores de usuarios (98%)."},
+      {q:"Errores de usuarios: $19.698 al año. Malversación: $1.275 al año. ¿Dónde conviene poner más controles?",o:["En los errores de usuarios","En la malversación","En ambos por igual","En ninguno"],a:"En los errores de usuarios",c:"riesgo",w:"Los controles van donde la pérdida anual esperada es mayor: $19.698 contra $1.275. Esa cifra ya incluye qué tan probable es cada riesgo. La malversación cuesta más cada vez que ocurre, pero ocurre tan pocas veces que al año pesa mucho menos."},
       {q:"Un evento ocurre a lo más una vez al año y cuesta como máximo $1.000. ¿Conviene un control de $20.000?",o:["No: cuesta más de lo que protege","Sí: todo riesgo debe controlarse","Solo si lo pide la auditoría","Solo si es una amenaza interna"],a:"No: cuesta más de lo que protege",c:"riesgo",w:"La evaluación del riesgo busca el conjunto de controles más eficiente: no se gastan $20.000 para evitar una pérdida de $1.000."}
     ]},
     { type:"seq", lead:"¿Dónde enfocar los controles?", seqs:[{title:"Ordena dónde invertir primero en controles: de mayor a menor pérdida anual esperada.",steps:["Falla de energía · 30% × $102.500 = $30.750 al año","Errores de usuarios · 98% × $20.100 = $19.698 al año","Malversación · 5% × $25.500 = $1.275 al año"],c:"riesgo",w:"Los controles deben enfocarse primero en la energía y en los errores de usuarios. La malversación cuesta más por evento que un error, pero es poco probable."}]}
@@ -2166,7 +2199,7 @@ const SECTORS = [
   ]},
   { name:"Herramientas de red", m:"Instala las herramientas de defensa.", brief:["firewall","paquetes","estado",{vs:["paquetes","estado"],d:"El filtrado de paquetes revisa cada paquete suelto, sin contexto. La inspección con estado recuerda la conversación completa y rechaza lo que no pertenece a ella."},"nat","proxy","ids","antivirus","utm"], phases:[{ type:"wire", sets:[
       [{c:"paquetes",d:"Revisa los encabezados de paquetes aislados"},
-       {c:"estado",d:"¿El paquete es parte de una conversación aprobada?"},
+       {c:"estado",d:"Revisa si cada paquete es parte de una conversación aprobada"},
        {c:"nat",d:"Oculta las direcciones IP internas"},
        {c:"proxy",d:"Un intermediario inspecciona el contenido y lo pasa"}],
       [{c:"firewall",d:"Controla el tráfico entre la red privada e Internet"},
@@ -2213,9 +2246,9 @@ const SECTORS = [
     { type:"memo", pairs:[
       {c:"ssl",d:"Sesión segura entre navegador y servidor"},
       {c:"shttp",d:"Cifra mensajes individuales"},
-      {c:"certificado",d:"Archivo que prueba tu identidad en línea"},
+      {c:"certificado",d:"Archivo de una CA que prueba tu identidad y trae tu clave pública"},
       {c:"ca",d:"Tercero de confianza que emite certificados"},
-      {c:"pki",d:"Clave pública + CA: la base del e-commerce"}
+      {c:"pki",d:"Cifrado de clave pública + autoridad de certificación"}
     ]},
     { type:"seq", seqs:[{title:"Figura 8.7: ordena cómo se obtiene y se usa un certificado digital.",steps:["Solicitas un certificado a una autoridad de certificación","La CA verifica tu identidad","La CA emite un certificado con tu clave pública","Tu socio usa el certificado para confirmar quién eres"],c:"certificado"}]}
   ]},
@@ -2296,7 +2329,7 @@ const SECTORS = [
       {q:"FireEye detectó el malware y dio la alarma, pero nadie actuó. ¿Qué tipo de herramienta sí funcionó?",p:["ids","firewall","nat"],a:"ids",w:"FireEye vigiló el tráfico y dio la alarma, como un sistema de detección de intrusos. Lo que falló fue la respuesta humana."},
       {q:"Los sistemas de pago no estaban aislados del resto de la red. ¿Qué lo habría evitado?",o:["Firewall interno","Política de retención","Recorrido del código"],a:"Firewall interno",c:"firewall",w:"Un firewall también separa una parte de la red del resto, como el firewall interno de la figura 8.5."},
       {q:"¿Por qué el chip EMV es más seguro que la tira magnética?",o:["Valor cifrado distinto en cada compra","Guarda más datos personales","No necesita PIN"],a:"Valor cifrado distinto en cada compra",c:"cifrado"},
-      {q:"Ganancias −46%, decenas de demandas y la salida del CEO. ¿Qué ilustra?",p:["valorneg","clickfraud","tolerante"],a:"valorneg"}
+      {q:"Tras la brecha, Target pierde 46% de sus ganancias, enfrenta decenas de demandas y su CEO renuncia. ¿Qué concepto muestra que proteger la información vale para el negocio?",p:["valorneg","clickfraud","tolerante"],a:"valorneg"}
     ]},
     { type:"gate", tag:"Robo de US$45 millones", bl:"Es una debilidad", pl:"Es una defensa", rule:"Bloquea las DEBILIDADES que facilitaron el robo. Deja pasar las DEFENSAS que lo habrían frenado.",
       items:[
@@ -2436,6 +2469,7 @@ const G = {
   controles: () => at("doc", 26, 24, 2.3) + [16, 24, 32].map(y => at("check", 46, y, .75, "s")).join(""),
   valorneg: () => at("store", 22, 27, 1.7) + at("shield", 46, 20, 1.5, "s") + at("chart", 50, 38, .7, "s"),
   responsabilidad: () => at("scale", 32, 26, 2.1) + at("money", 54, 9, .9, "t") + at("person", 10, 9, .75) + cap(18, 47.6, "demandas y multas", "t", 4),
+  rgpd: () => at("person", 20, 22, 1.6) + at("lock", 30, 30, 1.1, "s") + at("globe", 48, 22, 1.5, "s") + cap(6, 46, "datos personales", "s", 4.3),
   hipaa: () => at("health", 17, 24, 1.5, "s") + at("doc", 42, 24, 1.6) + at("lock", 51, 32, .8, "s") + cap(4, 46, "datos de salud", "s", 4.3),
   glb: () => at("bank", 20, 24, 1.8) + at("lock", 47, 26, 1.4, "s") + cap(4, 46, "datos de clientes de bancos", "s", 3.6),
   sox: () => at("chart", 19, 24, 1.8) + at("doc", 44, 24, 1.5) + at("check", 53, 34, .8, "s") + cap(3, 46, "finanzas de empresas en bolsa", "s", 3.5),
@@ -2662,6 +2696,8 @@ const asSort = ph => {
   return ph;
 };
 SECTORS.forEach(s => s.rounds.forEach(r => { r.phases = r.phases.map(asSort); }));
+/* the final of each section is only Contramedida: its other games repeat what the section already played */
+SECTORS.forEach(s => s.rounds.forEach(r => { if (r.boss && r.phases.some(p => p.type === "tower")) r.phases = r.phases.filter(p => p.type === "tower"); }));
 SECTORS.forEach((s, si) => { s.missions = buildMissions(s, si); });
 const missionTasks = def => def.phases.reduce((n, ph) => n + phaseTotal(ph), 0);
 const missionSecs = def => clamp(missionTasks(def) * 8, 30, 180);
@@ -2831,8 +2867,13 @@ const A = {
       try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { this.ctx = null; }
       if (this.ctx) {
         const c = this.ctx, k = c.createDynamicsCompressor(), m = c.createGain();
-        k.threshold.value = -16; k.ratio.value = 4; k.attack.value = .003; k.release.value = .18; k.connect(c.destination);
-        m.gain.value = 1; m.connect(k); this.out = k; this.mus = m;
+        k.threshold.value = -16; k.ratio.value = 4; k.attack.value = .003; k.release.value = .18;
+        /* louder overall: effects are boosted into the compressor, a makeup gain lifts everything, and a hard limiter keeps it from clipping */
+        const sfx = c.createGain(), mk = c.createGain(), lim = c.createDynamicsCompressor();
+        sfx.gain.value = 2.6; mk.gain.value = 1.7;
+        lim.threshold.value = -1.5; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = .001; lim.release.value = .08;
+        sfx.connect(k); k.connect(mk); mk.connect(lim); lim.connect(c.destination);
+        m.gain.value = 1.3; m.connect(k); this.out = sfx; this.mus = m;
       }
     }
     if (this.ctx && this.ctx.state === "suspended") this.ctx.resume().catch(() => {});
@@ -2965,7 +3006,7 @@ const fx = {
     requestAnimationFrame(step);
   }
 };
-function popText(t, x, y, cls) { x = clamp(x, Math.min(innerWidth / 2, 18 + t.length * 5.5), Math.max(innerWidth / 2, innerWidth - 18 - t.length * 5.5)); const d = document.createElement("div"); d.className = "popt" + (cls ? " " + cls : ""); d.textContent = t; d.style.left = x + "px"; d.style.top = y + "px"; document.body.appendChild(d); setTimeout(() => d.remove(), 950); }
+function popText(t, x, y, cls) { x = clamp(x, Math.min(innerWidth / 2, 18 + t.length * 5.5), Math.max(innerWidth / 2, innerWidth - 18 - t.length * 5.5)); const d = document.createElement("div"); d.className = "popt" + (cls ? " " + cls : ""); d.textContent = t; d.style.left = x + "px"; d.style.top = y + "px"; document.body.appendChild(d); setTimeout(() => d.remove(), 1550); }
 function fireBeam(wire, pk) {
   const beam = $(".beam", wire), core = $(".core", wire);
   const wr = wire.getBoundingClientRect(), pr = pk.getBoundingClientRect(), cr = core.getBoundingClientRect();
@@ -3121,29 +3162,32 @@ function streakCard() {
 }
 /* frequently asked questions about the whole game */
 const FAQ = [
-  ["¿Cómo se juega?", "Cada sección tiene misiones cortas de menos de un minuto. Hay 10 minijuegos distintos; la primera vez que aparece uno, te explica sus controles. Antes de una misión nueva ves sus conceptos en tarjetas."],
+  ["¿Cómo se juega?", "El juego tiene 5 secciones: Vulnerabilidad, Valor, Marco, Defensa y Simulacro. Puedes empezar por cualquiera de las cuatro primeras. Cada misión completada abre la siguiente de su sección. Antes de una misión nueva ves sus conceptos en tarjetas, con definición y ejemplo del libro. Hay 10 minijuegos; la primera vez que aparece uno, te explica cómo se juega."],
   ["¿Qué cambia entre Normal y Bestia?", "Normal va tranquilo y no acelera. Bestia es más rápido, acelera con tu combo y da 50% más XP. Los dos enseñan lo mismo. Cámbialo cuando quieras en Perfil.", "mode"],
-  ["¿Qué son los escudos?", "Cada error te quita un escudo y muestra la explicación. Encadenar aciertos te devuelve uno. Si llegas a cero, tienes una pregunta de segunda oportunidad."],
-  ["¿Cómo gano estrellas?", "Tres estrellas si terminas la misión sin errores, dos con uno o dos errores y una con más. Puedes repetir misiones para mejorar."],
+  ["¿Qué son los escudos?", "Cada error te quita un escudo y muestra la explicación. Si eliges algo relacionado pero no lo más preciso, ves un «Casi» y no pierdes escudo. Encadenar aciertos te devuelve uno. Si llegas a cero, tienes una pregunta de segunda oportunidad."],
+  ["¿Cómo gano estrellas?", "Tres estrellas si terminas la misión sin errores, dos con uno o dos errores y una con más. Se guarda tu mejor resultado, así que repetir solo puede subirlas. En la lista de misiones, las completadas iluminan su ícono."],
   ["¿Para qué sirve el reloj?", "La línea de tiempo de abajo es el reloj de la misión: solo da puntos extra si terminas antes, y si se acaba la misión sigue. Pero en algunos juegos cada pregunta tiene su propio tiempo (el paquete que avanza en Interceptar, la tarjeta que cae en Clasificar, la palabra en Descifrar, la frase en Auditor): si ese tiempo se acaba sin responder, cuenta como error."],
-  ["¿Cómo repaso para una prueba?", "En Flashcards, «Repaso del día» mezcla preguntas de todo lo que ya viste, muchas con situaciones reales. Después aparece «Practicar» para seguir con rondas nuevas las veces que quieras. Al cerrar una sección, «Ver la respuesta de la sección» resume lo que tienes que saber."],
-  ["¿Qué son las flashcards?", "Cada misión cumplida te da las cartas de sus conceptos. Tócalas para verlas en grande y voltearlas: al reverso está la definición."],
+  ["¿Cómo repaso para una prueba?", "En Flashcards, «Repaso del día» te da seis preguntas de lo que ya viste, primero lo que más te cuesta. Repasar un poco cada día ayuda a no olvidar. Después aparece «Practicar» para seguir con rondas nuevas las veces que quieras. Al completar una sección, «Ver la respuesta de la sección» resume lo que tienes que saber."],
+  ["¿Qué son las flashcards?", "Cada misión cumplida te da las cartas de sus conceptos. Tócalas para verlas en grande y voltearlas: al reverso está la definición y un ejemplo del libro."],
   ["¿Qué son la XP, los rangos y la racha?", "La XP sube tu rango, de Becario a CISO. La racha cuenta los días seguidos que juegas; un protector la salva si faltas un día."],
   ["¿Qué significan los íconos de cada misión?", "Cada ícono es un minijuego. La primera vez que aparece uno, te muestra cómo se juega.", "icons"],
-  ["¿Qué es el final de cada sección y el simulacro?", "Cada sección termina con una misión de defensa contra su villano. La sección final, Simulacro, aplica todo al caso real de Target en 4 misiones."],
-  ["¿Se guarda mi progreso?", "Sí, en este dispositivo y en tu cuenta, para que puedas seguir en otro equipo."]
+  ["¿Qué es el final de cada sección y el simulacro?", "Cada sección termina con una misión de Contramedida: frenas los ataques de su villano con la defensa correcta. El Simulacro se abre al completar las cuatro secciones y aplica todo al caso real de Target en 4 misiones."],
+  ["¿Se guarda mi progreso?", "Sí, en este navegador: si vuelves desde el mismo equipo, sigues donde ibas. Puedes tener hasta 3 partidas (P1, P2 y P3). Si borras los datos del navegador o juegas en modo incógnito, el progreso se pierde."],
+  ["¿Encontraste un error?", "Si crees que una respuesta del juego está mal, toca «Reportar error» en la pantalla que explica tu error: se envía con la pregunta ya incluida. Para ideas o comentarios generales, usa «Enviar comentario», aquí abajo o en el menú de pausa. Es anónimo."]
 ];
 /* Preguntas frecuentes: a list of questions; each opens its own page with a way back */
 const ICON_ROWS = [["mcq", "Elige el concepto que describe la situación."], ["sort", "Manda cada tarjeta a su grupo."], ["seq", "Ordena los pasos del proceso."], ["drag", "Ubica cada pieza en su lugar de la figura."], ["wire", "Une cada término con su descripción."], ["run", "Entra por la puerta del concepto correcto."], ["word", "Arma el nombre del concepto letra por letra."], ["snake", "Guía la serpiente hasta el concepto correcto."], ["audit", "Corrige la palabra equivocada de la frase."], ["tower", "Dispara la defensa que frena cada amenaza."]];
 /* a friendly face for each question: an emoji, a short title and its colour */
-const FAQ_UI = [["🎮", "Cómo se juega", "#00e0ff"], ["⚡", "Normal o Bestia", "#ff36d9"], ["🛡️", "Escudos", "#3dff8f"], ["⭐", "Estrellas", "#ffd23f"], ["⏱️", "El reloj", "#ff7a3d"], ["📚", "Repasar para una prueba", "#a66bff"], ["🃏", "Flashcards", "#00e0ff"], ["🏅", "XP, rangos y racha", "#ffd23f"], ["🧩", "Íconos de los minijuegos", "#3dff8f"], ["🏁", "Finales y simulacro", "#ff36d9"], ["💾", "Tu progreso", "#a66bff"]];
+const FAQ_UI = [["cursor", "Cómo se juega", "#00e0ff"], ["bolt", "Normal o Bestia", "#ff36d9"], ["shield", "Escudos", "#3dff8f"], ["star", "Estrellas", "#ffd23f"], ["clock", "El reloj", "#ff7a3d"], ["doc", "Repasar para una prueba", "#a66bff"], ["card", "Flashcards", "#00e0ff"], ["chart", "XP, rangos y racha", "#ffd23f"], ["crosshair", "Íconos de los minijuegos", "#3dff8f"], ["flag", "Finales y simulacro", "#ff36d9"], ["db", "Tu progreso", "#a66bff"], ["mag", "Reportar un error", "#ff7a3d"]];
+/* line icons drawn with the game's own pictogram strokes, in each tile's neon colour */
+const faqIco = k => `<svg class="ft-svg" viewBox="-9 -9 18 18" aria-hidden="true">${k === "star" ? '<path d="M0-7.5l2.2 4.6 5 .7-3.6 3.5.9 5L0 4 -4.5 6.3l.9-5-3.6-3.5 5-.7z"/>' : SH[k] || ""}</svg>`;
 const faqPoints = t => t.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿«])/).filter(Boolean);
 function faq(open) {
   const o = $("#cardview");
   const page = open != null ? FAQ[open] : null;
-  const body = !page ? `<p class="faq-hi">¿Qué quieres saber?</p><div class="faq-grid">${FAQ.map((q, i) => { const u = FAQ_UI[i] || ["❔", q[0], "#00e0ff"]; return `<button class="faq-tile" data-q="${i}" style="--c:${u[2]}"><span class="ft-e" aria-hidden="true">${u[0]}</span><span class="ft-t">${u[1]}</span></button>`; }).join("")}</div>`
-    : `<button class="mono link faq-back" id="faq-back">‹ Preguntas frecuentes</button><div class="faq-head" style="--c:${(FAQ_UI[open] || [])[2] || "#00e0ff"}"><span class="ft-e big" aria-hidden="true">${(FAQ_UI[open] || ["❔"])[0]}</span><h4 class="faq-t">${page[0]}</h4></div><ul class="faq-pts">${faqPoints(page[1]).map(p => `<li>${p}</li>`).join("")}</ul>${page[2] === "icons" ? `<table class="faq-ico"><tbody>${ICON_ROWS.map(([t, d]) => `<tr><td class="fi-i">${icon(t)}</td><td class="fi-n">${MECH[t].n}</td><td class="fi-d">${d}</td></tr>`).join("")}</tbody></table>` : ""}${page[2] === "mode" ? '<button class="btn ghost" id="faq-mode">Ver la comparación completa</button>' : ""}`;
-  o.innerHTML = `<div class="cv-box faq-box">${page ? "" : '<h3 class="cv-term">Preguntas frecuentes</h3>'}<div class="faq">${body}</div><button class="btn" id="cv-ok">Listo</button></div>`;
+  const body = !page ? `<p class="faq-hi">¿Qué quieres saber?</p><div class="faq-grid">${FAQ.map((q, i) => { const u = FAQ_UI[i] || ["doc", q[0], "#00e0ff"]; return `<button class="faq-tile" data-q="${i}" style="--c:${u[2]}"><span class="ft-e">${faqIco(u[0])}</span><span class="ft-t">${u[1]}</span></button>`; }).join("")}</div>`
+    : `<button class="mono link faq-back" id="faq-back">‹ Volver</button><div class="faq-head" style="--c:${(FAQ_UI[open] || [])[2] || "#00e0ff"}"><span class="ft-e big">${faqIco((FAQ_UI[open] || ["doc"])[0])}</span><h4 class="faq-t">${page[0]}</h4></div><ul class="faq-pts">${faqPoints(page[1]).map(p => `<li>${p}</li>`).join("")}</ul>${page[2] === "icons" ? `<table class="faq-ico"><tbody>${ICON_ROWS.map(([t, d]) => `<tr><td class="fi-i">${icon(t)}</td><td class="fi-n">${MECH[t].n}</td><td class="fi-d">${d}</td></tr>`).join("")}</tbody></table>` : ""}${page[2] === "mode" ? '<button class="btn ghost" id="faq-mode">Ver la comparación completa</button>' : ""}`;
+  o.innerHTML = `<div class="cv-box faq-box">${page ? "" : '<h3 class="cv-term">Preguntas frecuentes</h3>'}<div class="faq">${body}</div>${page ? "" : reportLink("Comentario general", "", "Enviar comentario")}<button class="btn" id="cv-ok">Listo</button></div>`;
   o.hidden = false; A.tick();
   $("#cv-ok").onclick = () => { o.hidden = true; };
   if ($("#faq-mode")) $("#faq-mode").onclick = () => modeInfo();
@@ -3439,7 +3483,9 @@ function openStories(def, cards, then) {
   /* said once at the top instead of on every card */
   const fresh = cards.some(e => !save.seen[cardKey(e)]);
   B.sub = fresh ? "Nuevos conceptos" : "Repaso de conceptos";
-  $("#st-hint").textContent = TOUCH ? "Toca para avanzar · mantén para pausar" : "→ avanza · ← vuelve · mantén el clic para pausar";
+  /* the how-to line only shows on the first few concept decks, then it gets out of the way */
+  save.briefN = (save.briefN || 0) + 1;
+  $("#st-hint").textContent = save.briefN <= 3 ? (TOUCH ? "Toca para avanzar · mantén para pausar" : "→ avanza · ← vuelve · mantén el clic para pausar") : "";
   $("#st-bars").innerHTML = cards.map(() => '<span class="st-seg"><i></i></span>').join("");
   go("s-brief"); showStory(0);
   cancelAnimationFrame(B.raf); B.raf = requestAnimationFrame(storyTick);
@@ -3462,6 +3508,7 @@ function showStory(i) {
     html = `<article class="story vs"><p class="mono story-tag">${e.t || "¿Cuál es la diferencia?"}</p><div class="b-vs" style="--n:${items.length}">${items.map(v => `<figure class="vs-p">${glyph(v.g, true, "g-hero")}<figcaption>${v.l}</figcaption></figure>`).join("")}</div><p class="story-d">${e.d}</p></article>`;
   }
   $("#deck").innerHTML = html;
+  $("#b-conf-go").href = formUrl("Error en un concepto", "Misión: " + B.def.name + " | Tarjeta: " + (typeof e === "string" ? C[e].t : e.open !== undefined ? SECTORS[e.open].name : (e.t || "Diferencia") + " " + e.vs.map(v => typeof v === "string" ? C[v].t : v.l).join(" / ")));
   $$(".st-seg i").forEach((f, k) => { f.style.transform = `scaleX(${k < i ? 1 : 0})`; });
 }
 function storyTick(ts) {
@@ -3577,7 +3624,9 @@ function intro(ph, cb) {
   /* if the concept cards were not shown just now (already seen, a second part, a replay), offer them before starting */
   const briefed = BRIEFED === R.def.id; if (R.pi === 0) BRIEFED = null;
   if (wait && R.pi === 0 && !R.def.daily && !briefed && storyCards(R.def, true).length) $("#count", el).insertAdjacentHTML("beforebegin", '<button class="btn ghost in-brief" id="in-brief">Repasar conceptos</button>');
-  if (wait) $$(".tap-on", el).forEach(n => { n.classList.add("go-pill"); n.innerHTML = `▶ ${TOUCH ? "Toca para empezar" : "Empezar <span class=\"k\">Enter</span>"}`; });
+  if (wait) $$(".tap-on", el).forEach(n => { n.classList.add("go-pill"); n.setAttribute("role", "button"); n.innerHTML = `▶ ${TOUCH ? "Toca para empezar" : "Empezar <span class=\"k\">Enter</span>"}`; });
+  /* start and review sit together at the bottom; only the start pill starts the game */
+  if (wait) { const f = document.createElement("div"); f.className = "in-foot"; [$("#in-brief", el), $(".tap-on", el)].forEach(n => n && f.appendChild(n)); el.appendChild(f); el.classList.add("is-wait"); } else el.classList.remove("is-wait");
   /* "‹ Volver" on the start screen: back to the map without playing */
   el.insertAdjacentHTML("afterbegin", '<button class="hud-back in-back" id="in-back" aria-label="Volver al mapa"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg><span>Volver</span></button>');
   el.hidden = false;
@@ -3595,7 +3644,7 @@ function intro(ph, cb) {
 /* the first Bestia mission explains its four rules once */
 function beastRules(then) {
   const el = $("#intro"), r = R;
-  R.introOn = true; el.classList.remove("quick");
+  R.introOn = true; el.classList.remove("quick", "is-wait");
   el.innerHTML = `<p class="mono" style="color:var(--hype)">Modo Bestia</p><h3 class="intro-name">Reglas</h3>
     <ul class="b-rules"><li><b>Combo:</b> cada 2 aciertos seguidos tus puntos valen más, hasta ×8. Un error lo corta.</li><li><b>Velocidad:</b> todo va más rápido y acelera con tu combo.</li><li><b>Crítico ×1.5:</b> responde muy rápido.</li><li><b>Fiebre ×2:</b> 4 aciertos seguidos dan puntos dobles unos segundos.</li><li><b>XP +50%:</b> la XP sube tu rango, de Becario a CISO.</li><li><b>Combo vivo:</b> si sigues antes de 90 s, el combo pasa a la siguiente misión.</li></ul><p class="mono">Toca para empezar</p>`;
   el.hidden = false; A.fever();
@@ -3735,8 +3784,17 @@ const vsText = (a, b) => {
 };
 /* the pick block for a chosen concept: a near miss explains the overlap, a look-alike gets the distinction, anything else its own meaning */
 const pickFor = (t, id, ans) => { const r = relOf(id, ans); return Object.assign(pickOf(t, id, r ? r.text : vsText(id, ans)), { near: !!r }); };
+const SHOW_MORE = false;
 /* what the player picked: its name and what it actually means (the short hook; the full definition goes under "Más explicación") */
 const pickOf = (t, id, d) => ({ t, id: id && C[id] ? id : null, d: d || (id && C[id] ? C[id].h : "") });
+/* reports and feedback go to an anonymous Google Form; the context of the question is filled in for the player */
+const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfACE6DcdLv4PijqdSx2esuabgLb56kKXicWjlhR50GDCK-fw/viewform?usp=pp_url";
+const formUrl = (tipo, ctx) => FORM + "&entry.214534641=" + encodeURIComponent(tipo) + "&entry.603437297=" + encodeURIComponent(ctx || "");
+const reportLink = (tipo, ctx, label) => `<a class="rep-link" href="${formUrl(tipo, ctx)}" target="_blank" rel="noopener">${label}</a>`;
+function sheetCtx(o) {
+  const d = R && R.def;
+  return [d ? "Misión: " + d.name : "", R && R.ph ? "Juego: " + (MECH[R.ph.type] || {}).n : "", (o.quote || (R && R.item && (R.item.q || R.item.x))) ? "Pregunta: " + (o.quote || R.item.q || R.item.x) : "", o.pick && o.pick.t ? "Elegido: " + o.pick.t : "", o.term ? "Correcto según el juego: " + o.term : "", o.why ? "Explicación: " + o.why : ""].filter(Boolean).join("\n");
+}
 function sheet(o, cb) {
   const s = $("#sheet");
   s.className = "sheet " + (o.bad === false ? "good" : o.soft ? "near" : "bad");
@@ -3747,8 +3805,9 @@ function sheet(o, cb) {
     $("#sheet-panel").innerHTML = `<p class="mono sh-head">${esc(o.head)}</p>` + (o.quote ? `<p class="sh-quote">«${esc(o.quote)}»</p>` : "") +
       `<div class="sh-cmp"><div class="sh-row ${P.near ? "near" : "bad"}">${mini(P.id) || `<span class="sh-ic" aria-hidden="true">${P.near ? "≈" : "✕"}</span>`}<div class="sh-rt"><p class="mono sh-lab">${P.near ? "Elegiste · casi" : "Elegiste"}</p><p class="sh-t">${esc(P.t)}</p>${P.d ? `<p class="sh-d">${esc(P.d)}</p>` : ""}</div></div>` +
       `<div class="sh-row ok">${mini(gid && G[gid] ? gid : null) || '<span class="sh-ic" aria-hidden="true">✓</span>'}<div class="sh-rt"><p class="mono sh-lab">Correcto</p><p class="sh-t sh-term">${esc(o.term)}</p>${o.sub ? `<p class="mono sh-sub">${esc(o.sub)}</p>` : ""}${o.why ? `<p class="sh-d">${esc(o.why)}</p>` : ""}</div></div></div>` +
-      (more ? `<details class="sh-more"><summary>+ Más explicación</summary>${more}</details>` : "") +
-      `<button class="btn" id="sh-go">Continuar <span class="k">Espacio</span></button>`;
+      /* "+ Más explicación" is off for now; set SHOW_MORE to true to bring it back */
+      (SHOW_MORE && more ? `<details class="sh-more"><summary>+ Más explicación</summary>${more}</details>` : "") +
+      (o.bad === false ? "" : reportLink("Error en una pregunta", sheetCtx(o), "Reportar error")) + `<button class="btn" id="sh-go">Continuar <span class="k">Espacio</span></button>`
   } else $("#sheet-panel").innerHTML =
     `<p class="mono sh-head">${esc(o.head)}</p>` + (o.rule ? `<p class="sh-rule">${esc(o.rule)}</p>` : "") +
     (o.quote ? `<p class="sh-quote">«${esc(o.quote)}» →</p>` : "") +
@@ -3756,7 +3815,7 @@ function sheet(o, cb) {
     (o.sub ? `<p class="mono sh-sub">${esc(o.sub)}</p>` : "") +
     (o.why ? `<p class="sh-why">${esc(o.why)}</p>` : "") + `</div>` +
     (gid && G[gid] ? `<div class="sh-vis">${glyph(gid, true, "g-hero")}</div>` : "") + `</div>` +
-    `<button class="btn" id="sh-go">Continuar <span class="k">Espacio</span></button>`;
+    (o.bad === false ? "" : reportLink("Error en una pregunta", sheetCtx(o), "Reportar error")) + `<button class="btn" id="sh-go">Continuar <span class="k">Espacio</span></button>`
   s.hidden = false; R.sheetAt = performance.now();
   R.sheetCb = () => { if (!R) return; s.hidden = true; R.sheetCb = null; cb(); };
   $("#sh-go").onclick = () => R && R.sheetCb && R.sheetCb();
@@ -3965,8 +4024,8 @@ function sqBind() {
     };
     /* neighbours are measured where they sit in the layout, not where their slide animation shows them */
     const lt = list.getBoundingClientRect().top - list.scrollTop, box = el => ({ top: lt + el.offsetTop, height: el.offsetHeight });
-    if (prev && !prev.classList.contains("ok")) { const p = box(prev); if (mid < p.top + p.height * .7) return shift(prev, true); }
-    if (next) { const q = box(next); if (mid > q.top + q.height * .3) shift(next, false); }
+    if (prev && !prev.classList.contains("ok")) { const p = box(prev); if (mid < p.top + p.height * .6) return shift(prev, true); }
+    if (next) { const q = box(next); if (mid > q.top + q.height * .4) shift(next, false); }
   };
   /* on a short screen the list scrolls: holding a card near its top or bottom edge scrolls it */
   const edge = () => {
@@ -3978,13 +4037,16 @@ function sqBind() {
     if (!moved) return;
     d.y0 -= moved; move(d.y); d.raf = requestAnimationFrame(edge);
   };
-  list.addEventListener("pointermove", e => {
+  /* window-level: moving the card in the list drops pointer capture, so a release above the list must still be heard */
+  const onMove = e => {
+    if (!list.isConnected) { window.removeEventListener("pointermove", onMove); return; }
     if (!d || e.pointerId !== d.id) return;
     d.y = e.clientY; move(e.clientY);
     if (!d.raf) d.raf = requestAnimationFrame(edge);
-  });
-  const up = e => { if (!d || e.pointerId !== d.id) return; const { c, moved, raf } = d; d = null; if (raf) cancelAnimationFrame(raf); c.classList.remove("drag"); c.style.transform = ""; if (!moved) sqSelect([...list.children].indexOf(c)); };
-  list.addEventListener("pointerup", up); list.addEventListener("pointercancel", up);
+  };
+  window.addEventListener("pointermove", onMove);
+  const up = e => { if (!list.isConnected) { window.removeEventListener("pointerup", up); window.removeEventListener("pointercancel", up); return; } if (!d || e.pointerId !== d.id) return; const { c, moved, raf } = d; d = null; if (raf) cancelAnimationFrame(raf); c.classList.remove("drag"); c.style.transform = ""; if (!moved) sqSelect([...list.children].indexOf(c)); };
+  window.addEventListener("pointerup", up); window.addEventListener("pointercancel", up);
 }
 function sqClearSel() { R.sqSel = -1; $$("#sq-list .sq-card.sel").forEach(c => c.classList.remove("sel")); }
 /* tap (or 1–9) picks a step; a second pick swaps the two; ↑ ↓ move the picked one */
@@ -4675,11 +4737,12 @@ function nextAudit() {
   const it = R.queue.shift(); if (!it) return nextPhase();
   R.item = it; R.segs = parseAudit(it.s); R.busy = false; R.an++;
   $("#au-tag").textContent = `${it.tag || R.ph.tag || "Auditoría"} · encuentra el error`;
-  $("#au-s").innerHTML = R.segs.map((g, i) => `<button class="seg" data-i="${i}" style="--i:${i}">${esc(g.t)}</button>`).join(" ");
+  /* each word gets its own button, even inside a multi-word error, so its length does not give it away */
+  let k = 0; $("#au-s").innerHTML = R.segs.map((g, i) => g.t.split(/\s+/).map(w => `<button class="seg" data-i="${i}" style="--i:${k++}">${esc(w)}</button>`).join(" ")).join(" ");
   const av = $("#au-vis"); av.className = "au-vis"; av.innerHTML = "";
   R.timer = { el: 0, T: clamp(5200 + R.segs.length * 420 - ramp() * 150, 6000, 15000), warn: true, tick: p => { const b = $("#bonus"); if (b) b.style.transform = `scaleX(${1 - p})`; }, end: () => auditMiss(-1) };
 }
-function fixSeg(i) { const b = $(`.seg[data-i="${i}"]`), g = R.segs[i]; b.classList.add("caught"); const f = document.createElement("span"); f.className = "fix"; f.textContent = g.fix; b.after(f); return b; }
+function fixSeg(i) { const bs = $$(`.seg[data-i="${i}"]`), g = R.segs[i]; bs.forEach(b => b.classList.add("caught")); const b = bs[bs.length - 1]; const f = document.createElement("span"); f.className = "fix"; f.textContent = g.fix; b.after(f); return bs[0]; }
 function tapSeg(i) {
   if (held() || R.busy || !R.timer || R.ph.type !== "audit") return;
   const g = R.segs[i]; R.busy = true; const t = R.timer; R.timer = null;
@@ -4688,7 +4751,7 @@ function tapSeg(i) {
     award(x, y - 24, clamp(1 - t.el / t.T, 0, 1), true); live("Error encontrado. Lo correcto es " + g.fix);
     const av = $("#au-vis"), cid = R.item.c; av.innerHTML = glyph(cid, true, "g-hero") + `<span class="mono">${C[cid].t}</span>`; av.classList.add("show");
     later(1700, nextAudit);
-  } else { restart($(`.seg[data-i="${i}"]`), "no"); auditMiss(i); }
+  } else { $$(`.seg[data-i="${i}"]`).forEach(b => restart(b, "no")); auditMiss(i); }
 }
 function auditMiss(i) {
   R.busy = true; R.timer = null;
@@ -4763,6 +4826,8 @@ function pause(on) {
   if (on && (R.sheetCb || R.menu || R.rescueOn)) return;
   R.menu = on; $("#pause").hidden = !on;
   if (on) $("#pa-set").innerHTML = prefToggles(["sound", "music"]);
+  if (on && !$("#pa-rep")) $("#pause").insertAdjacentHTML("beforeend", '<p id="pa-rep"></p>');
+  if (on) $("#pa-rep").innerHTML = reportLink(R.def && R.def.daily ? "Comentario general" : "Comentario sobre una misión", R.def ? "Misión: " + R.def.name + (R.ph ? "\nJuego: " + MECH[R.ph.type].n : "") : "", "Enviar comentario");
   /* a mission you already beat can be skipped */
   if (on) $("#pa-skip").hidden = !(R.def && !R.def.daily && save.missions[R.def.id]);
   /* the mission's concept cards can be read again at any moment, without losing your progress */
@@ -5201,7 +5266,7 @@ function renderArchive() {
   $("#a-count").textContent = `${got}/${ids.length} cartas`;
   const pool = reviewPool(), inf = infected();
   /* the review asks first what you missed; no "infected" labels */
-  $("#a-net").innerHTML = pool.length >= 4 || inf.length ? `<button class="link" id="a-clean">${dailyState().review ? "Practicar" : "Repaso del día"} ›</button>` : "";
+  $("#a-net").innerHTML = pool.length >= 4 || inf.length ? `<button class="link" id="a-clean">${dailyState().review ? "Practicar" : "Repaso del día"} ›</button><small class="a-why">${dailyState().review ? "Seis preguntas más, cuando quieras." : "Seis preguntas de lo que ya viste, primero lo que más te cuesta. Repasar un poco cada día ayuda a no olvidar."}</small>` : "";
   $("#a-tabs").innerHTML = SECTORS.slice(0, 4).map((s, i) => { const sid = ids.filter(id => C[id].s === i + 1), g = sid.filter(id => save.concepts[id]).length; return `<button class="tab${i === archTab ? " on" : ""}" role="tab" aria-selected="${i === archTab}" data-t="${i}"><span>${s.name}</span><span class="mono">${g}/${sid.length}</span></button>`; }).join("");
   const list = ids.filter(id => C[id].s === archTab + 1), have = list.filter(id => save.concepts[id]).length;
   $("#a-bar").style.transform = `scaleX(${list.length ? have / list.length : 0})`;
@@ -5363,6 +5428,18 @@ $("#sector").addEventListener("click", e => {
   });
   $("#tabbar").addEventListener("click", e => { const b = e.target.closest(".tab-b"); if (b) { A.tick(); openTab(b.dataset.go); } });
   $("#b-skip").onclick = e => { e.stopPropagation(); storyEnd(); };
+  /* reporting opens the form in a new tab and leaves the cards where they were */
+  /* the flag asks first; the form opens in a new tab and the cards wait meanwhile */
+  /* one confirm dialog for both places: the concept cards wait, the game freezes like in pause */
+  let repFrom = null;
+  const repOpen = (from, q) => { repFrom = from; $("#b-conf-q").textContent = q; $("#b-conf").hidden = false; $("#b-conf-go").focus({ preventScroll: true }); };
+  const repClose = () => { $("#b-conf").hidden = true; if (repFrom === "brief" && B) B.paused = false; if (repFrom === "play" && R && screen === "s-play") R.menu = false; repFrom = null; };
+  window.__repClose = repClose;
+  $("#b-rep").onclick = e => { e.stopPropagation(); if (B) B.paused = true; repOpen("brief", "¿Quieres reportar un error en esta tarjeta?"); };
+  $("#p-rep").onclick = e => { e.stopPropagation(); if (!R || screen !== "s-play" || R.menu || R.sheetCb || R.rescueOn || R.introOn) return; R.menu = true; $("#b-conf-go").href = formUrl("Error en una pregunta", sheetCtx({})); repOpen("play", "¿Quieres reportar un error en esta pregunta?"); };
+  $("#b-conf-no").onclick = e => { e.stopPropagation(); repClose(); };
+  $("#b-conf-go").onclick = e => { e.stopPropagation(); setTimeout(repClose, 0); };
+  $("#b-conf").onclick = e => { if (e.target === $("#b-conf")) repClose(); };
   let SP = null;
   const stage = $("#deck");
   stage.addEventListener("pointerdown", e => { if (!B) return; SP = { x: e.clientX, y: e.clientY, t: performance.now(), held: false }; SP.timer = setTimeout(() => { if (SP && B) { SP.held = true; B.paused = true; } }, 230); });
@@ -5384,7 +5461,7 @@ $("#sector").addEventListener("click", e => {
   $("#pa-skip").onclick = skipGame;
   $("#pa-restart").onclick = restartRound;
   $("#pa-brief").onclick = reviewFromPause;
-  $("#intro").onclick = e => { if (e.target.closest("#in-back")) { e.stopPropagation(); quitRound(); return; } if (e.target.closest("#in-brief")) { e.stopPropagation(); restartWithConcepts(R && R.def); return; } if (R && R.introCb) R.introCb(); };
+  $("#intro").onclick = e => { if (e.target.closest("#in-back")) { e.stopPropagation(); quitRound(); return; } if (e.target.closest("#in-brief")) { e.stopPropagation(); restartWithConcepts(R && R.def); return; } if ($("#intro").classList.contains("is-wait") && $(".tap-on", $("#intro")) && !e.target.closest(".tap-on")) return; if (R && R.introCb) R.introCb(); };
   $("#a-list").addEventListener("click", e => { const c = e.target.closest(".fc"); if (c) openCard(c.dataset.id); });
   $("#a-net").addEventListener("click", e => { if (!e.target.closest("#a-clean")) return; const d = buildReview(); if (d) { A.init(); play(d); } });
   $("#a-tabs").addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) { archTab = +t.dataset.t; renderArchive(); } });
@@ -5425,6 +5502,7 @@ $("#sector").addEventListener("click", e => {
   addEventListener("keydown", e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key, onBtn = document.activeElement && document.activeElement.closest && document.activeElement.closest("button, summary");
+    if (!$("#b-conf").hidden) { if (k === "Escape") { e.preventDefault(); window.__repClose(); } return; }
     if (!$("#rankup").hidden) { if (k === "Enter" || k === "Escape" || k === " ") { e.preventDefault(); $("#rankup").hidden = true; } return; }
     if (!$("#sharecard").hidden) { if (k === "Escape") $("#sharecard").hidden = true; return; }
     if (!$("#cardview").hidden) {
@@ -5478,8 +5556,9 @@ fx.init(); bind();
 applyCalm(); renderTitle(); go("s-title");
 readCard(); showIncomingCard();
 initSocial();
-if (window.__BC_DEBUG) window.__bc = { get R() { return R; }, get save() { return save; }, startRound, play, SECTORS, C, finish, G, glyph, buildReview, openTab, LB, rescue, renderMap, go, A };
+if (window.__BC_DEBUG) window.__bc = { get R() { return R; }, get save() { return save; }, startRound, play, SECTORS, C, finish, G, glyph, buildReview, openTab, LB, rescue, renderMap, go, A, openStories };
 })();
 </script>
+
 
 </body></html>
