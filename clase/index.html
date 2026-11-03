@@ -173,7 +173,8 @@ button:disabled{cursor:default}
 .node-wrap.is-sel .node{background:var(--ink);color:var(--bg)}
 .node-wrap.is-locked .node{color:var(--mute)}
 .node-l{white-space:nowrap;color:var(--mute);font-size:11px}
-.node .grp svg{position:static;width:22px;height:22px;rotate:0deg;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.mm-teamgo{border-color:var(--c,#ff8a3d);color:#ff8a3d;box-shadow:inset 0 0 0 1.5px #ff8a3d}
+.node .grp svg{position:static;width:26px;height:26px;rotate:0deg;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
 .node .grp{display:grid;place-items:center}
 .team-form{display:flex;flex-direction:column;gap:12px;margin-top:6px}
 .mm-team{margin:0 0 6px;color:var(--case)}
@@ -4141,6 +4142,9 @@ function renderSector(anim) {
   const ni = ms.findIndex((m, k) => unlocked(selSec, k) && !missionDone(m)), nx = ni >= 0 ? ms[ni] : null;
   const starSum = ms.reduce((n, m) => n + (save.missions[m.id] ? save.missions[m.id].stars : 0), 0);
   const links = `<button class="btn ghost mm-list" id="m-list" aria-expanded="${listOpen}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 4h9M5 8h9M5 12h9"/><circle cx="2" cy="4" r=".9"/><circle cx="2" cy="8" r=".9"/><circle cx="2" cy="12" r=".9"/></svg>Misiones <span class="mm-count">${rdone}/${groups.length}</span></button>`;
+  /* every section card offers a straight way into the team section, so it is not missed on the map */
+  const gi = SECTORS.findIndex(x => x.group);
+  const teamBtn = gi >= 0 && gi !== selSec ? `<button class="btn ghost mm-teamgo" id="m-teamgo" data-s="${gi}">${esc(SECTORS[gi].name)} ›</button>` : "";
   let main;
   if (s.group && !teamOK()) main = `<p class="mono mm-meta">${esc(s.case)}</p><h2 class="mm-name">Arma tu equipo</h2><p class="mm-stake">Parejas o tríos con un solo dispositivo. Escriban sus nombres en el orden en que van a jugar; el tercero es opcional.</p><form class="team-form" id="team-form" autocomplete="off">${[0, 1, 2].map(i => `<input class="ns-name tm-in" maxlength="12" spellcheck="false" aria-label="Integrante ${i + 1}" placeholder="Integrante ${i + 1}" value="${esc((save.team || [])[i] || "")}">`).join("")}<button class="btn big" type="submit">Listo</button></form>`;
   else if (s.sim) main = simCard(s);
@@ -4153,6 +4157,7 @@ function renderSector(anim) {
     main = `<p class="mono mm-meta">${fin ? "Juego completo" : esc(s.case)} · ${starSum}/${ms.length * 3} estrellas</p><h2 class="mm-name">${fin ? esc(chapterOf(CHAP).sub) : "Sección completa"}</h2><p class="mm-stake">Repite misiones para conseguir las tres estrellas.</p><button class="mono link mm-recap" id="m-recap">Ver la respuesta de la sección</button><div class="mm-cta">${nxt != null ? `<button class="btn big mm-play" id="m-nextcase" data-s="${nxt}">Ir a ${esc(SECTORS[nxt].short)}</button>` : ""}${links}</div>`;
   }
   if (s.group && teamOK() && !listOpen) main = `<p class="mono mm-team">Equipo: ${esc(listNames(save.team))} <button class="link mm-team-edit" id="team-edit">Cambiar</button></p>` + main;
+  if (teamBtn && !listOpen) main = main.replace(/<\/div>\s*$/, teamBtn + "</div>").includes(teamBtn) ? main.replace(/<\/div>\s*$/, teamBtn + "</div>") : main + `<div class="mm-cta">${teamBtn}</div>`;
   const el = $("#sector");
   /* the mission list replaces the next-mission block; the header and case nodes stay */
   el.innerHTML = `${listOpen ? `<div class="ml-head"><button class="mono link ml-back" id="m-list" aria-expanded="true">‹ Volver</button></div>` : `<div class="mm">${main}</div>`}
@@ -4164,6 +4169,7 @@ function renderSector(anim) {
       return `<li><button class="round${all ? " is-done" : ""}${parts.some(([, ri]) => ri === ni) ? " is-next" : ""}" data-r="${target ? target[1] : parts[0][1]}"${target ? "" : " disabled"}><span class="r-n mono">${String(gi + 1).padStart(2, "0")}</span><span class="r-name">${esc(r.name)}${n > 1 ? `<span class="r-parts mono${got.length === n ? " on" : ""}" aria-label="${got.length} de ${n} partes">${got.length}/${n} partes</span>` : ""}</span><span class="r-ico">${ts.map(t => icon(t)).join("")}</span><span class="r-st">${target ? stars(st) : LOCK}</span></button></li>`;
     }).join("")}</ol>` : ""}`;
   if (anim) restart(el, "swap");
+  const tg = $("#m-teamgo", el); if (tg) tg.addEventListener("click", () => { A.tick(); goCase(+tg.dataset.s, 1); });
   const tf = $("#team-form", el);
   if (tf) tf.addEventListener("submit", e => {
     e.preventDefault();
