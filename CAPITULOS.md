@@ -7,7 +7,7 @@ Documento para retomar el trabajo en un chat nuevo. Léelo completo antes de toc
 | Qué | Dónde |
 |---|---|
 | Juego publicado (lo usan alumnos y colegas) | repo `Franco-Campos-Nunez/tsi-game`, rama `main`, archivo `index.html` → https://franco-campos-nunez.github.io/tsi-game/ |
-| Versión congelada del capítulo 8 | etiqueta `v1-cap8` en `tsi-game` |
+| Versión congelada del capítulo 8 | rama `cap8-publicado` en `tsi-game` (copia exacta de lo compartido) |
 | Desarrollo de capítulos nuevos | rama `desarrollo` en `tsi-game` (GitHub Pages no la publica) |
 | Respaldo y herramientas | repo `Franco-Campos-Nunez/Proyecto-TSI`, rama `brecha-cero-backup`, carpeta `brecha-cero/` |
 | Vista previa en Claude | artefacto https://claude.ai/artifact/6sk4u2QxFffACm4vD8rtRJ |
