@@ -2033,6 +2033,10 @@ dt:has(> .er-ico){display:flex;align-items:center}
 }
 @keyframes rotHint{0%,30%{rotate:90deg}60%,100%{rotate:0deg}}
 @media (prefers-reduced-motion:reduce){.rotate-cover svg{animation:none}}
+/* map on wide screens: the play button sits in the middle */
+@media (min-width:641px){.mm-cta:has(> .btn:only-child){justify-content:center}.mm-cta{justify-content:center}}
+/* map on PC: a bigger mission capsule */
+@media (min-width:641px){.mm-seg{padding:5px;gap:6px}.mm-seg-b,.mm-seg .mm-pill{min-height:48px;padding:6px 22px;font-size:14px;gap:9px}.mm-seg-b svg,.mm-seg-ico{width:15px;height:15px}}
 </style>
 
 <div id="app" lang="es">
