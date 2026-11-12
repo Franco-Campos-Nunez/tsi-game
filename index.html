@@ -2037,6 +2037,11 @@ dt:has(> .er-ico){display:flex;align-items:center}
 @media (min-width:641px){.mm-cta:has(> .btn:only-child){justify-content:center}.mm-cta{justify-content:center}}
 /* map on PC: a bigger mission capsule */
 @media (min-width:641px){.mm-seg{padding:5px;gap:6px}.mm-seg-b,.mm-seg .mm-pill{min-height:48px;padding:6px 22px;font-size:14px;gap:9px}.mm-seg-b svg,.mm-seg-ico{width:15px;height:15px}}
+/* phones: a zone of a pictured figure never grows; its placed pieces stay on one line (newest first) so every zone stays in view */
+@media (max-width:640px){
+  .dg-zones:is([data-lay="chain"],[data-lay="flow"],[data-lay="panels"]) .zone-in{flex-wrap:nowrap;overflow:hidden;max-width:100%;-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
+  .dg-zones:is([data-lay="chain"],[data-lay="flow"],[data-lay="panels"]) .ztag{flex:none;white-space:nowrap}
+}
 </style>
 
 <div id="app" lang="es">
@@ -2161,7 +2166,7 @@ const C8 = {
   malware:{s:1,t:"Malware",h:"Cualquier software creado para hacer daño",d:"Software malicioso: programas creados para dañar, espiar o tomar el control de una computadora. Incluye virus, gusanos, caballos de Troya, spyware, keyloggers y ransomware. Llega por correos y adjuntos, descargas, mensajería, anuncios comprometidos y redes sociales.",v:"**Software malicioso**: programas creados para dañar, espiar o tomar el control de una computadora.\nIncluye :: virus, gusanos, caballos de Troya, spyware, keyloggers y ransomware.\nLlega por :: correos y adjuntos, descargas, mensajería, anuncios comprometidos y redes sociales.",x:"En Target, los hackers instalaron en los terminales de pago un programa que capturaba en secreto el número de cada tarjeta y lo enviaba a servidores que ellos controlaban."},
   virus:{s:1,t:"Virus",h:"Se pega a un archivo y viaja si alguien lo envía",d:"Programa malicioso que se une a otros programas o archivos para poder ejecutarse, casi siempre sin que el usuario lo sepa. Entrega una «carga útil» que puede ser inofensiva (un mensaje) o destructiva: borrar datos, formatear el disco o trabar la memoria. Depende de las personas para esparcirse: alguien envía un adjunto o copia un archivo infectado.",v:"Programa malicioso que **se une a otros programas o archivos** para poder ejecutarse, casi siempre sin que el usuario lo sepa.\nCarga útil :: inofensiva (un mensaje) o destructiva: borrar datos, formatear el disco o trabar la memoria.\nPropagación :: depende de las personas: alguien envía un adjunto o copia un archivo infectado.",x:"ILOVEYOU llegaba como adjunto de correo; quien lo abría lo activaba sin saberlo, y el virus sobrescribía música, imágenes y otros archivos con copias de sí mismo.",xv:"ILOVEYOU:\n→ Llegaba como adjunto de correo | Quien lo abría lo activaba sin saberlo | Sobrescribía música, imágenes y otros archivos con copias de sí mismo"},
   gusano:{s:1,t:"Gusano",h:"Salta solo de computadora en computadora",d:"Programa independiente que se copia a sí mismo de una computadora a otra a través de la red. A diferencia del virus, no necesita unirse a otro archivo ni que una persona haga algo, por eso se esparce mucho más rápido. Destruye datos y programas y puede detener redes completas.",v:"Programa **independiente** que se copia a sí mismo de una computadora a otra a través de la red.\nDestruye datos y programas y puede detener redes completas.",x:"Sasser (2004) atacaba direcciones IP al azar y paralizó vuelos de British Airways y hospitales de Hong Kong."},
-  troyano:{s:1,t:"Caballo de Troya",h:"Parece un regalo, pero trae malware escondido",d:"Programa que parece inofensivo pero hace algo distinto de lo esperado. No es un virus porque no se reproduce: su función es abrir la puerta para que entren virus u otro malware. Su nombre viene del caballo de madera con que los griegos entraron a Troya.",v:"Programa que **parece inofensivo** pero hace algo distinto de lo esperado.\nNo es un virus porque no se reproduce: su función es abrir la puerta para que entren virus u otro malware.\nSu nombre viene del caballo de madera con que los griegos entraron a Troya.",x:"El troyano Zeus llega escondido en una descarga o un correo que parece legítimo; una vez instalado, captura en secreto lo que tecleas para robar tus claves del banco.",xv:"El troyano **Zeus**:\n→ Llega escondido en una descarga o un correo que parece legítimo | Se instala | Captura en secreto lo que tecleas | Roba tus claves del banco"},
+  troyano:{s:1,t:"Caballo de Troya",h:"Parece un regalo, pero trae malware escondido",d:"Programa que parece inofensivo, pero al ejecutarse hace algo distinto de lo que promete. No es un virus, porque no se reproduce. Suele ser la puerta por la que entran virus u otro malware a la computadora. Su nombre viene del caballo de madera con que los griegos engañaron a los troyanos para que les abrieran las puertas de su ciudad.",v:"Programa que **parece inofensivo**, pero al ejecutarse hace algo distinto de lo que promete.\nNo se reproduce :: por eso no es un virus.\nSu función :: abrir la puerta para que entren virus u otro malware.\nSu nombre :: viene del caballo de madera con que los griegos engañaron a los troyanos para que les abrieran las puertas de su ciudad.",x:"El troyano Zeus llega escondido en una descarga o un correo que parece legítimo; una vez instalado, captura en secreto lo que tecleas para robar tus claves del banco.",xv:"El troyano **Zeus**:\n→ Llega escondido en una descarga o un correo que parece legítimo | Se instala | Captura en secreto lo que tecleas | Roba tus claves del banco"},
   driveby:{s:1,t:"Descarga oculta",h:"Malware escondido en algo que descargas",d:"Drive-by: malware que viene incluido en un archivo que el usuario pidió descargar, a propósito o sin darse cuenta. El usuario cree que baja algo legítimo y junto con eso instala el programa malicioso.",x:"Supuestos «visores de imágenes» de Instagram traían malware que redirigía sitios e instalaba programas sin permiso."},
   sqli:{s:1,t:"Inyección de SQL",h:"Mete código en un formulario web mal validado",d:"Ataque que aprovecha una aplicación web mal programada que no valida lo que el usuario escribe en un formulario. El atacante escribe una consulta SQL falsa que llega a la base de datos, y así puede leerla, plantar código malicioso o entrar a otros sistemas de la red.",v:"Ataque que aprovecha una aplicación web mal programada que **no valida** lo que el usuario escribe en un formulario.\n→ El atacante escribe una consulta SQL falsa | Llega a la base de datos | Puede leerla, plantar código malicioso o entrar a otros sistemas de la red"},
   ransomware:{s:1,t:"Ransomware",h:"Secuestra tus archivos y pide rescate",d:"Malware que extorsiona: toma el control de la computadora o cifra sus archivos y exige un pago para devolver el acceso. Funciona igual en computadores y teléfonos. Se contagia al abrir un adjunto infectado, hacer clic en un vínculo de un correo o visitar un sitio malicioso.",v:"Malware que **extorsiona**: toma el control de la computadora o cifra sus archivos y exige un pago para devolver el acceso.\nFunciona igual en computadores y teléfonos. Se contagia al:\n• abrir un adjunto infectado\n• hacer clic en un vínculo de un correo\n• visitar un sitio malicioso",x:"CryptoLocker cifraba los archivos y cobraba cientos de dólares por devolverlos."},
@@ -2276,7 +2281,7 @@ const SECTORS8 = [
     bins:[{l:"Virus",c:"virus"},{l:"Gusano",c:"gusano"}],
     cards:[
       {x:"Se une a otro programa o archivo para poder ejecutarse.",a:0},
-      {x:"Programa independiente que se copia a sí mismo.",a:1},
+      {x:"Programa independiente: no necesita esconderse dentro de otro archivo.",a:1},
       {x:"Se esparce cuando alguien abre un adjunto o copia un archivo infectado.",a:0},
       {x:"Salta de una computadora a otra por la red, sin que nadie haga nada.",a:1},
       {x:"Se esparce mucho más rápido porque casi no depende de las personas.",a:1},
@@ -2352,7 +2357,7 @@ const SECTORS8 = [
     ]}]},
   { name:"Mitos de la red", m:"Alguien difunde mitos. Corrígelos.", brief:["internos","bugs","parches"], phases:[{ type:"audit", tag:"Mitos",
     items:[
-      {s:"Un gusano [necesita|no necesita] unirse a otro programa: se copia solo de una computadora a otra por la red.",c:"gusano"},
+      {s:"Un gusano se esparce [más lento|más rápido] que un virus, porque no necesita que una persona haga algo.",c:"gusano"},
       {s:"Un caballo de Troya [se reproduce solo|no se reproduce] y abre la puerta a otro malware.",c:"troyano"},
       {s:"Un ataque de negación de servicio [roba|no roba] información: solo satura el servidor.",c:"dos"},
       {s:"En programas grandes es [sencillo|casi imposible] eliminar todos los bugs.",c:"bugs"},
@@ -5419,6 +5424,7 @@ let CPFX = "", CSKIN = {}, CSIM = null;
 const MECH_TXT = ["mcq", "tower"].flatMap(t => ["d", "k", "kt"].map(f => [t, f]));
 let MECH_BASE = null;
 /* prepare a chapter once (missions cut, card numbers) and return its content */
+const CH_RANKS = {};
 function chapterPack(id) {
   const P = CHAPTER_DATA[id] && CHAPTER_DATA[id](); if (!P) return null;
   if (CLASS_ED && id === CLASS_ED.chap) {
@@ -5431,7 +5437,9 @@ function chapterPack(id) {
   /* the team section is only played in the class edition for now */
   if (!CLASS_ED && P.SECTORS.some(x => x.group)) { const keep = P.SECTORS.map((x, i) => x.group ? -1 : i).filter(i => i >= 0); P.SECTORS = keep.map(i => P.SECTORS[i]); P.TAKE_Q = keep.map(i => P.TAKE_Q[i] || []); }
   if (!CH_CNO[id]) { if (P.pfx) prepSectors(P.SECTORS, P.pfx); CH_CNO[id] = Object.fromEntries(Object.keys(P.C).map((k, i) => [k, i + 1])); }
-  P.CNO = CH_CNO[id]; return P;
+  P.CNO = CH_CNO[id];
+  if (!CH_RANKS[id]) { const n = P.SECTORS.reduce((k, sec) => k + sec.missions.length, 0), top = n * 5000, L = P.RANKS.length; CH_RANKS[id] = P.RANKS.map((r, i) => ({ n: r.n, xp: i ? Math.round(Math.pow(i / (L - 1), 1.7) * top / 500) * 500 : 0 })); }
+  P.RANKS = CH_RANKS[id]; return P;
 }
 function useChapter(id) {
   const P = chapterPack(id); if (!P) return false;
@@ -5910,9 +5918,9 @@ function openStories(def, cards, then) {
   go("s-brief"); showStory(0);
   cancelAnimationFrame(B.raf); B.raf = requestAnimationFrame(storyTick);
 }
-/* Normal gives each card time to read its own text (about 210 words a minute); Bestia keeps the quick pace */
+/* every card stays long enough to read its own text calmly (about 13 characters a second), in Normal and in Bestia; a tap moves on sooner */
 const storyText = e => typeof e === "string" ? C[e].h + C[e].d + (C[e].x || "") : e.open !== undefined ? SECTORS[e.open].intro + SECTORS[e.open].q : e.d || "";
-const storyDur = e => { const base = typeof e === "string" ? 3800 : e.open !== undefined ? 9000 : 7500; return save.mode === "beast" ? Math.max(base, 1500 + storyText(e).length * 30) : Math.max(base, 2600 + storyText(e).length * 48); };
+const storyDur = e => { const base = typeof e === "string" ? 6000 : e.open !== undefined ? 10000 : 9000; return Math.max(base, 3000 + storyText(e).length * 75); };
 function showStory(i) {
   B.i = i; B.el = 0; const e = B.cards[i];
   save.seen[cardKey(e)] = 1;
@@ -6634,7 +6642,9 @@ function dropChip(el, z) {
   if (R.sel) { R.sel.classList.remove("sel"); R.sel = null; }
   if (it.z === z) {
     R.queue.splice(R.queue.indexOf(it), 1); el.remove();
-    const tag = document.createElement("span"); tag.className = "ztag"; tag.textContent = it.x; $(".zone-in", zone).appendChild(tag);
+    const tag = document.createElement("span"); tag.className = "ztag"; tag.textContent = it.x;
+    /* in the pictured figures the newest piece goes first, so on a phone (one line per zone) it is the one you see */
+    const zin = $(".zone-in", zone), lay = $(".dg-zones").dataset.lay; if (lay === "pool" || lay === "matrix") zin.appendChild(tag); else zin.prepend(tag);
     restart(zone, "flash");
     if (!R.queue.some(c => c.z === z)) { zone.classList.add("full"); dgWires($(".dg-zones")); }
     const [x, y] = cen(tag); fx.burst(x, y, css("--safe"), 16, .8);
